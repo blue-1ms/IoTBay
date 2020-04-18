@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 17/04/2020, 4:27:48 PM
+    Document   : index
+    Created on : 17/04/2020, 4:27:36 PM
     Author     : blue
 --%>
 
@@ -10,9 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        <title>JSP Page</title>
+        <title>IoTBay Web Store</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Welcome to IoTBay Web Store</h1>
+        
+         <div class="login">
+        <a href="login.jsp">Login</a>
+        <a href="register.jsp">Register</a>
+         </div>
     </body>
 </html>
