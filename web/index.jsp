@@ -13,7 +13,7 @@
         <title>IoTBay Web Store</title>
     </head>
     <body>
-        <h1>Welcome to IoTBay Web Store</h1>
+        <h1>Welcome to IoTBay Web Store!</h1>
         
          <div class="login">
         <a href="login.jsp">Login</a>
