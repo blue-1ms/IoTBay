@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/demo.css">
+        <link rel="stylesheet" href="css/style.css">
         <title>Home Page</title>
     </head>
     <body>
