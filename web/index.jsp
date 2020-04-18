@@ -12,12 +12,12 @@
         <link rel="stylesheet" href="css/style.css">
         <title>IoTBay Web Store</title>
     </head>
-    <body>
+    
         <h1>Welcome to IoTBay Web Store!</h1>
         
-         <div class="login">
-        <a href="login.jsp">Login</a>
-        <a href="register.jsp">Register</a>
+        <div class="login">
+        <a class="button" href="login.jsp">Login</a>
+        <a class="button" href="register.jsp">Register</a>
          </div>
-    </body>
+    
 </html>

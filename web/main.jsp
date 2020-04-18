@@ -14,12 +14,9 @@
     </head>
     <body>
        
-        <%
-            String email = request.getParameter("email");
-            %>   
-         <h1>Main</h1>
+         <h1>IoTBay Main</h1>
          <div class="login">
-        <p class="p">Hello: <%= email%></p>
+        <p class="p">Hello!  <%= request.getParameter("email")%></p>
         <a href="index.jsp">Logout</a>
          </div>
     </body>

@@ -13,9 +13,9 @@
         <title>Registration Page</title>
     </head>
     <body>
-        <h1>Welcome</h1>
+        <h1>Welcome, Please Register Your Account</h1>
   <form method push action="welcome.jsp">
-            <table>
+            <table align="center">
                 <tr><td>Full Name:</td><td><input type="text" placeholder="Enter name" name="name"></td></tr>
                 <tr><td>Email:</td><td><input type="text" placeholder="Enter email" name="email"></td></tr>
                 <tr><td>Password:</td><td><input type="password" placeholder="Enter password" name="password"></td></tr>

@@ -9,12 +9,28 @@ and open the template in the editor.
 */
 .login {
     text-align: right;
- background-color: red
+}
+.button {
+  background-color: #4CAF50;
+  border: 2px;
+  color: blue;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.p{text-align:right;
+  
+}
+.table{
+ 
 }
 
-
 *{
-  background-image: url("IoTBay.jpg");
+   background: linear-gradient(to right, #ffafbd, #ffc3a0, cyan);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;

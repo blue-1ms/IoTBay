@@ -17,11 +17,12 @@
     </head>
     <body>
         <form method push action="main.jsp">
-            <table>
-                <tr><td>Email </td><td><input type="text" placeholder="Enter Email" name="email" ></td></tr>
+            <h1>Login</h1>
+            <table align="center">
+                <tr><td>Email </td><td><input type="text"  placeholder="Enter Email" name="email" ></td></tr>
                 <tr><td>Password:</td><td><input type="password" placeholder="Enter Password" name="password"></td></tr> 
             </table>
-                   <a class="button" href="main.jsp" value="Login">Login</a> 
+                    <input type="submit" value="Login">
                     <a class="button" href="index.jsp" value="Cancel">Cancel</a>
         </form>
     </body>
