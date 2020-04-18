@@ -13,12 +13,13 @@
         <title>IoTBay Web Store</title>
     </head>
     <body>
-        <h1>Main</h1>
+       
         <%
-            String name = request.getParameter("name");
+            String email = request.getParameter("email");
             %>   
+         <h1>Main</h1>
          <div class="login">
-        <p class="p">Hello! <%= name%></p>
+        <p class="p">Hello: <%= email%></p>
         <a href="index.jsp">Logout</a>
          </div>
     </body>
