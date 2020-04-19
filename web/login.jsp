@@ -3,7 +3,7 @@
     Created on : 17/04/2020, 4:27:48 PM
     Author     : Group 31
     Summary: Page that allows the customer to login to their IoTBay account.
-    Needed for account login
+             Needed for account login.
     
 --%>
 
