@@ -1,19 +1,17 @@
 <%-- 
-    Document   : newjsplogout
-    Created on : 17/04/2020, 4:27:53 PM
-    Author     : blue
+    Document   : logout
+    Created on : 27/04/2020, 11:08:25 PM
+    Author     : charbelachmar
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/style.css">
-        <title>Logout</title>
-    </head>
-    <body>
-        <h1>You have successfully logged out!</h1>
-        <p>Click <a class="button" href="index.jsp">here</a> to go back.</p>
-    </body>
-</html>
+<jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
+<jsp:setProperty name="user" property="*"/>
+
+<% if (session != null) {
+        session.removeAttribute("user");
+        response.sendRedirect("index.jsp");
+    } else {
+        response.sendRedirect("login.jsp?status=login");
+    }
+%>

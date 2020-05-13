@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="IoTBay_Group_31" default="default" basedir=".">
-    <description>Builds, tests, and runs the project IoTBay Group 31.</description>
+<project name="ISD-Assignment2-UserAccount" default="default" basedir=".">
+    <description>Builds, tests, and runs the project ISD-Assignment2-UserAccount.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
