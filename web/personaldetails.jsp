@@ -39,40 +39,36 @@
             <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
             <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
         </header>
-        <form action="logout.jsp" method="post" class="formStyle" id="account">
+        <form action="UpdatePersonal" method="post" class="formStyle" id="account">
                 <h1>Update Profile Details</h1>
                 <br>
                 <ul>
-                    <li name="customerID">
+                    <li name="customerID" class="hiddenli">
                         <label for="customerID">Your ID is</label>
-                        <%= user.getID()%>
+                        <input readonly name="customerID" type="" value=${user.getID()}>
                     </li>
                     <li name="firstName">
                         <label for="firstName">Your first name is</label>
-                        <%= user.getFirstName()%>
+                        <input name="firstName" type="text" value=${user.getFirstName()}>
                     </li>
                     <br>
                     <li name="lastName">
                         <label for="lastName">Your last name is</label>
-                        <%= user.getLastName()%>
+                        <input name="lastName" type="text" value=${user.getLastName()}>
                     </li>
                     <br>
                     <li name="email">
                         <label for="email">Your email is</label>
-                        <%= user.getEmail()%>
+                        <input name="email" type="email" value=${user.getEmail()}>
                     </li>
                     <br>
                     <li name="phone">
                         <label for="phone">Your phone number is</label>
-                        <%= user.getPhone()%>
+                        <input name="phone" type="text" value=${user.getPhone()}>
                     </li>
                     <br>
-                    <li name="password">
-                        <label for="password">Your password is</label>
-                        <%= user.getPassword()%>
-                    </li>
                     <li>
-                        <input type="submit" value="Logout" >
+                        <input type="submit" value="Submit" >
                     </li>
                 </ul>
                 <br>
