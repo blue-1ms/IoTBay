@@ -40,6 +40,8 @@ public class iot_login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
+
+        
         email = email.toLowerCase();
 
         user.setEmail(email);
