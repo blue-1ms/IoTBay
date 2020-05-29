@@ -35,14 +35,21 @@
         <header>
             <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
         <nav>
+               
             <ul class="navlinks">
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="login.jsp">Products</a></li>
-                <li><a href="register.jsp">About Us</a></li>
+                <li><a href="about.jsp">About Us</a></li>
+                <li><a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a></li>
             </ul>
+   <div class="container">
+    <form class="form-inline" method="post" action="search.jsp">
+    <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue">
+    <button type="submit" name="save" class="SEARCH">SEARCH</button>
         </nav>
-            <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
+
+    
+
         </header>
             <div class="homePage">
             <div class="homeBanner">
