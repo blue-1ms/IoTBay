@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import ="java.sql.*" %>
+<% Class.forName("org.apache.derby.jdbc.ClientDriver");%>
 <jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
 <jsp:setProperty name="user" property="*"/>
 
@@ -27,9 +29,9 @@
                 <li><a href="redirect2.jsp"><%= bar2%></a></li>
                 <li>
                     <div class="container">
-                        <form class="form-inline" method="post" action="searchResult.jsp">
-                            <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue" class="searchBar">
-                            <input type="image" src="images/search.svg" name="save" class="searchIcon">
+                        <form class="form-inline" method="POST" action="searchResult.jsp">
+                            <input type="text" name="producttype" class="form-control" placeholder="Search by Type" class="searchBar">
+                            <input type="submit" value="search"/>
                         </form>
                     </div>
                 </li>
