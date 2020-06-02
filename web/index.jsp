@@ -37,12 +37,13 @@
         <nav>
             <ul class="navlinks">
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="login.jsp">Products</a></li>
-                <li><a href="register.jsp">About Us</a></li>
+                <li><a href="catalogue.jsp">Products</a></li>
+                <li><a href="account.jsp">Account</a></li>
+                <li><a href="about.jsp">About Us</a></li>
             </ul>
         </nav>
             <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
+            <a href="cart"><img src="images/menucart.svg" class="cartIcon"></a>
         </header>
             <div class="homePage">
             <div class="homeBanner">
@@ -56,7 +57,7 @@
                         <br>
                         <br>
                         <br>
-                        <a href="login.jsp" class="button" id="featured">Find out more</a>
+                        <a href="catalogue.jsp" class="button" id="featured">Find out more</a>
                     </div>
                     <div id="featuredImage">
                         <img class="featuredproduct" src="images/googlehome.png" alt="googlehome">

@@ -43,8 +43,9 @@
         <nav>
             <ul class="navlinks">
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="login.jsp">Products</a></li>
-                <li><a href="register.jsp">About Us</a></li>
+                <li><a href="catalogue.jsp">Products</a></li>
+                <li><a href="account.jsp">Account</a></li>
+                <li><a href="about.jsp">About Us</a></li>
             </ul>
         </nav>
             <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>

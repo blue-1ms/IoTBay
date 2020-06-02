@@ -39,7 +39,7 @@
             <ul class="navlinks">
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="catalogue.jsp">Products</a></li>
-                <li><a href="login.jsp">Account</a></li>
+                <li><a href="account.jsp">Account</a></li>
                 <li><a href="about.jsp">About Us</a></li>
             </ul>
         </nav>
@@ -49,7 +49,9 @@
     <body>
         <h1>About Us!</h1>
         <p>
-            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.
+            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices. <br>
+            With our online store, we hope to provide customers with around the clock access to everything IoT. <br>
+            Items purchased from our site can be either picked up at your nearest store or shipped directly to you door, through the our registered shipping partners. <br>
         </p>
     </body>
 </html>

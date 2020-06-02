@@ -1,9 +1,10 @@
 <%-- 
-    Document   : product
-    Created on : 26/05/2020, 6:03:33 PM
+    Document   : header
+    Created on : 01/06/2020, 12:58:30 PM
     Author     : mscov
 --%>
 
+<%@page import="uts.isd.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
 <jsp:setProperty name="user" property="*"/>
@@ -17,12 +18,15 @@
         bar2 = "Logout";
         logUser = "Welcome, " + user.getFirstName() + "!";
     }
+    
 %>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay</title>
+        <title>Cart Page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
@@ -44,29 +48,5 @@
             </ul>
         </nav>
             <a href="search.jsp"><img src="images/search.svg" class="searchIcon"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
+            <a href="cart"><img src="images/menucart.svg" class="cartIcon"></a>
         </header>
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="product">
-                        <h1>Hello World!</h1>
-                        <<form action="cart" method="post">
-                            <h2>Product</h2>
-                            <h3>Price</h3>
-                            <h3>Description</h3>
-                            <p>Product Description</p>
-                            <!-- Please provide product ID here -->
-                            <input type="hidden" value="0161239861" name="productID">
-                            <button type="submit" name="action" value="add">Add to Cart</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-            
-    </body>
-</html>
-
