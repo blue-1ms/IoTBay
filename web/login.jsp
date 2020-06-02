@@ -31,26 +31,7 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="topheader">
-            <ul class="tophead">
-                <li><a class="welcome">Welcome!</a></li>
-                <li><a href="login.jsp">Login</a></li>
-                <li><a href="register.jsp">Register</a></li>
-            </ul>
-        </div>    
-        <header>
-            <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
-        <nav>
-            <ul class="navlinks">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="catalogue.jsp">Products</a></li>
-                <li><a href="account.jsp">Account</a></li>
-                <li><a href="about.jsp">About Us</a></li>
-            </ul>
-        </nav>
-            <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
-        </header>
+        <jsp:include page="/header.jsp"/>
         <form action="iot_login" method="post" class="formStyle">
             <h1>Login</h1>
             <p><%= stat%></p>

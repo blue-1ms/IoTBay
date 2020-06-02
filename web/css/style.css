@@ -140,6 +140,7 @@ a.button:active{
 .tophead li{
     display: inline-block;
     padding: 0px 20px;
+    align-items: center;
 }
 
 .tophead li a{
@@ -147,6 +148,7 @@ a.button:active{
     font-weight: 300;
     font-size: 14px;
     color: #36383f;
+    align-items: center;
 }
 
 header{
@@ -220,21 +222,6 @@ button:hover{
     background-color: rgba(231, 76, 60,0.8);
 }
 
-.searchIcon{
-    display: inline-block;
-    width: 25px;
-    margin-left: 20px;
-    margin-right: 30px;
-    transition: all 0.3s ease 0s;
-}
-.searchIcon:hover{
-    transform: scale(1.1);
-}
-
-.searchIcon:active{
-    transform: scale(0.98);
-}
-
 .cartIcon{
     display: inline-block;
     width: 25px;
@@ -248,6 +235,47 @@ button:hover{
 .cartIcon:active{
     transform: scale(0.98);
 }
+
+
+
+.searchIcon{
+    display: inline-block;
+    width: 20px;
+    margin-right: 20px;
+    transition: all 0.3s ease 0s;
+    vertical-align: middle;
+}
+.searchIcon:hover{
+    transform: scale(1.1);
+}
+
+.searchIcon:active{
+    transform: scale(0.98);
+}
+
+
+.container input[type=text] {
+  padding: 10px 20px;
+  border: none;
+  width: 150px;
+  transition: all 0.3s ease 0s;
+}
+
+.container input[type=text]:focus-within{
+  width: 250px;
+}
+
+.container{
+      background-color: #fff;
+      padding: 5px 10px;
+      transition: all 0.3s ease 0s;
+      border:1px solid #fff;
+}
+
+.container:focus-within{
+border:1px solid #e74c3c;
+}
+
 
 /*---------------------- End Navigation Bar -------------------------*/
 
@@ -582,4 +610,3 @@ a#manageAccount:hover{
     width: 125px;
     text-align: center;
 }
-

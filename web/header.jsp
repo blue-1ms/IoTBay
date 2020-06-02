@@ -24,9 +24,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cart Page</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
@@ -35,6 +32,14 @@
                 <li><a class="welcome"><%= logUser%></a></li>
                 <li><a href="redirect1.jsp"><%= bar1%></a></li>
                 <li><a href="redirect2.jsp"><%= bar2%></a></li>
+                <li>
+                    <div class="container">
+                        <form class="form-inline" method="post" action="search.jsp">
+                            <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue" class="searchBar">
+                            <input type="image" src="images/search.svg" name="save" class="searchIcon">
+                        </form>
+                    </div>
+                </li>
             </ul>
         </div>    
         <header>
@@ -47,6 +52,7 @@
                 <li><a href="about.jsp">About Us</a></li>
             </ul>
         </nav>
-            <a href="search.jsp"><img src="images/search.svg" class="searchIcon"></a>
-            <a href="cart"><img src="images/menucart.svg" class="cartIcon"></a>
+            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
         </header>
+            
+            
