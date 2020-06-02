@@ -4,25 +4,9 @@
         <servlet-name>testController</servlet-name>
         <servlet-class>uts.isd.controller.testController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>cartController</servlet-name>
-        <servlet-class>uts.isd.controller.CartController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CheckoutController</servlet-name>
-        <servlet-class>uts.isd.controller.CheckoutController</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>testController</servlet-name>
         <url-pattern>/testController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>cartController</servlet-name>
-        <url-pattern>/cart/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CheckoutController</servlet-name>
-        <url-pattern>/checkout/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
