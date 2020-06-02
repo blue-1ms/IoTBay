@@ -33,7 +33,7 @@
                 <div class="col">
             
                     <div class="product">
-                        <h1>Hello World!</h1>
+                        <h1>Hello!</h1>
                         <h2>Product</h2>
                         <h3>Price</h3>
                         <h3>Description</h3>

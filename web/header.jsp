@@ -27,7 +27,7 @@
                 <li><a href="redirect2.jsp"><%= bar2%></a></li>
                 <li>
                     <div class="container">
-                        <form class="form-inline" method="post" action="search.jsp">
+                        <form class="form-inline" method="post" action="searchResult.jsp">
                             <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue" class="searchBar">
                             <input type="image" src="images/search.svg" name="save" class="searchIcon">
                         </form>
@@ -41,7 +41,7 @@
 
                 <ul class="navlinks">
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="login.jsp">Products</a></li>
+                    <li><a href="product.jsp">Products</a></li>
                     <li><a href="about.jsp">About Us</a></li>
                     <li><a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a></li>
                 </ul>
