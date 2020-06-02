@@ -1,0 +1,26 @@
+Git Command Steps
+Before starting work:
+1. Team --> Checkout --> Checkout Revisions
+2.Checkout master
+3.Pull (refreshes master)
+
+When working with feature branches
+1. Create a new local branch (Branch/Tag --> Create Branch)
+2. Give new name to branch by uisng the following: feature/[insert userstory number-description]
+3. Make changes
+4. Commit changes to local branch with a comment(oultining the changes): (Team --> Commit)
+
+Repeat Steps 3 - 4 for until feature is complete or finished for the day
+
+5. Push to origin (Team --> Remote --> Push)
+6. Select the branch you want to push to. 
+
+To Merge Feature into master branch
+1. Open up github in the browser
+2. Find our IoTBay Repository
+3. Locate your feature branch from step 6.
+4. Create a pull request and write comment of change
+5. Wait for nominated team member to approve and merge into master
+
+
+ 
