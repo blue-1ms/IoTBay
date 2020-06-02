@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay</title>
+        <title>Catalogue</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
@@ -39,7 +39,7 @@
             <ul class="navlinks">
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="catalogue.jsp">Products</a></li>
-                <li><a href="login.jsp">Account</a></li>
+                <li><a href="account.jsp">Account</a></li>
                 <li><a href="about.jsp">About Us</a></li>
             </ul>
         </nav>
@@ -53,6 +53,8 @@
                 <div class="col">
 
                     <h1>Catalogue</h1>
+                    <h2>Frequently Purchased Products</h2>
+                    <!-- Insert A jumbotron or carosuel for images -->
                     <ul>
                         <li><a href="product.jsp">Product one</a></li>
                         <li><a href="product.jsp">Product two</a></li>

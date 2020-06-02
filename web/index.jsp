@@ -34,24 +34,23 @@
         </div>    
         <header>
             <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
-        <nav>
-               
-            <ul class="navlinks">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="login.jsp">Products</a></li>
-                <li><a href="about.jsp">About Us</a></li>
-                <li><a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a></li>
-            </ul>
-   <div class="container">
-    <form class="form-inline" method="post" action="search.jsp">
-    <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue">
-    <button type="submit" name="save" class="SEARCH">SEARCH</button>
-        </nav>
-
-    
-
+            <nav>               
+              <ul class="navlinks">
+                  <li><a href="index.jsp">Home</a></li>
+                  <li><a href="catalogue.jsp">Products</a></li>
+                  <li><a href="account.jsp">Account</a></li>
+                  <li><a href="about.jsp">About Us</a></li>
+                  <li><a href="cart"><img src="images/menucart.svg" class="cartIcon"></a></li>
+              </ul>
+              <div class="container">
+                <form class="form-inline" method="post" action="search.jsp">
+                  <input type="text" name="catalogue" class="form-control" placeholder="Search Catalogue">
+                  <button type="submit" name="save" class="SEARCH">SEARCH</button>
+                </form>
+              </div>
+            </nav>
         </header>
-            <div class="homePage">
+        <div class="homePage">
             <div class="homeBanner">
                 <div class="homefeatured">
                     <div id="featuredText">
@@ -63,7 +62,7 @@
                         <br>
                         <br>
                         <br>
-                        <a href="login.jsp" class="button" id="featured">Find out more</a>
+                        <a href="catalogue.jsp" class="button" id="featured">Find out more</a>
                     </div>
                     <div id="featuredImage">
                         <img class="featuredproduct" src="images/googlehome.png" alt="googlehome">
