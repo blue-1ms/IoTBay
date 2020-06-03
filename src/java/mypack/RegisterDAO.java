@@ -26,7 +26,7 @@ public class RegisterDAO {
         
         PreparedStatement ps = null;
         
-        String sql = "insert into USERDB.USERACCOUNT (EMAIL, FIRSTNAME, LASTNAME, PHONE, PASSWORD) values(?,?,?,?,?)";
+        String sql = "insert into USERDB.USERS (EMAIL, FIRSTNAME, LASTNAME, PHONE, PASSWORD) values(?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, userAccount.getEmail());

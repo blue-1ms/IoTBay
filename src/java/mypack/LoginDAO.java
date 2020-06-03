@@ -31,7 +31,7 @@ public class LoginDAO {
          String email = userAccount.getEmail();
          String password = userAccount.getPassword();
          
-         String sql = "SELECT * FROM USERDB.USERACCOUNT WHERE email = '"+email+"' AND password = '"+password+"'";
+         String sql = "SELECT * FROM USERDB.USERS WHERE email = '"+email+"' AND password = '"+password+"'";
 
 
          Connection con = DatabaseConnection.getConnection();
