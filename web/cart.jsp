@@ -23,12 +23,34 @@
 <html>
     <head>
         <title>IoTBay</title>
-        <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+         <style>
+            .logo {width: 150px;}
+            .divFloat{display: flex;
+                      justify-content: flex-end;
+                      flex-direction: row;
+                      padding: 50px 0px;
+            }
+            .checkoutHeader{display: inline-block; margin-right: auto; align-self: center;}
+            .checkoutBody{display: inline-block; float: right; align-self: center;}
+            .container{background-color: #fff !important; margin-top: 50px; padding: 100px 100px;}
+            .bodyHeader{font-size: 25px;}
+            body{background-color: #f2f2f2; color: #e74c3c;}
+        </style>
+        
     </head>
     <body>
-        <jsp:include page="/header.jsp"/>
             
         <div class="container">
+            <div class="divFloat">
+                <div class="checkoutHeader">
+                    <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
+                </div>
+                <div class="checkoutBody">
+                    <p class="bodyHeader">Cart</p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -99,17 +121,16 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-sm-12  col-md-6">
-                            <button class="btn btn-block btn-light">Continue Shopping</button>
+                            <a href="catalogue.jsp"><button class="btn btn-block btn-light">Continue Shopping</button></a>
                         </div>
                         <div class="col-sm-12 col-md-6 text-right">
-                            <button class="btn btn-lg btn-block btn-success text-uppercase"><a href="checkout.jsp">Checkout</a></button>
+                            <a href="checkout.jsp"><button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-          <jsp:include page="/footer.jsp"/>  
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>
 

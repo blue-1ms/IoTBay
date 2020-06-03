@@ -68,5 +68,6 @@ String status = request.getParameter("status");
 
             </form>
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>
 

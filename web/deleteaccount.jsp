@@ -49,6 +49,6 @@
             <p><a href="account.jsp" class="wlink"> Go Back </a> </p>
         </form> 
         </div>
-                <jsp:include page="/footer.jsp"/>
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>

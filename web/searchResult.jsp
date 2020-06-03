@@ -5,19 +5,10 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
-<jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
-<jsp:setProperty name="user" property="*"/>
 
-<% 
-    String bar1 = "Login";
-    String bar2 = "Register";
-    String logUser = "Welcome!";
-    if (user.isValid()) {
-        bar1 = "My Account";
-        bar2 = "Logout";
-        logUser = "Welcome, " + user.getFirstName() + "!";
-    }
-%>
+
+
+
 <!DOCTYPE html>
 <html>
 <body> 
@@ -26,7 +17,8 @@
         <title>Catalogue Search Result</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <jsp:include page="/header.jsp"/>
+    </head>
+
     <center>    
         <table border="1" width="50%" height="50%">
             <th>Product ID</font>
@@ -35,6 +27,7 @@
             <th>Product Description</font></th>
             <th>Product Price</font></th>
             <th>Product Stock</font></th>
+            <th>Product Release Date</font></th>
                 <%
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
                     Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/catalogue", "catalogue", "catalogue");
@@ -51,6 +44,7 @@
                      out.println("<td>" + rs.getString("productdescription") + "<input type='hidden' name='id' value='" + rs.getString("productdescription") + "'></td>");
                      out.println("<td>" + rs.getString("productprice") + "<input type='hidden' name='id' value='" + rs.getString("productprice") + "'></td>");
                      out.println("<td>" + rs.getString("productstock") + "<input type='hidden' name='id' value='" + rs.getString("productstock") + "'></td>");
+                     out.println("<td>" + rs.getString("productreleasedate") + "<input type='hidden' name='id' value='" + rs.getString("productreleasedate") + "'></td>");
                     }
                     st.close();
                 %>
@@ -58,6 +52,6 @@
         </table>
         <br>  <br><a href='index.jsp'>Back to Index</a>
 </form>
-        <jsp:include page="/footer.jsp"/>
 </body> 
+<jsp:include page="/footer.jsp"/>
 </html>

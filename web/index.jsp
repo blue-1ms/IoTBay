@@ -51,8 +51,8 @@
             <a href="register.jsp" class="button">Register</a>
         </div> -->
     </div>
-            <jsp:include page="/footer.jsp"/>
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>
 
 
