@@ -30,7 +30,7 @@
                 <h1>Welcome, <%= user.getFirstName()%></h1>
                 <h3>Your Customer ID is <%= user.getID() %></h3>
                 <br><br><br><br>
-                <a href="changepassword.jsp" id="manageAccount">Manage your password</a>
+                <a href="account.jsp" id="manageAccount">Manage your password</a>
                 <br><br>
                 <a href="deleteaccount.jsp" id="manageAccount">Delete Account</a>
             </div>
@@ -87,5 +87,6 @@
 
             </div>
         </div>
+                <jsp:include page="/footer.jsp"/>
     </body>
 </html>

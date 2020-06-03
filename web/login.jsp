@@ -2,7 +2,7 @@
 
 <% 
      if (user.isValid()) {
-                response.sendRedirect("account.jsp");
+                response.sendRedirect("welcome.jsp");
             }
      
            String status=request.getParameter("status");
@@ -53,5 +53,6 @@
             <br>
             <p> Don't have an account? <a href="register.jsp" class="wlink"> Register here </a> </p>
         </form> 
+            <jsp:include page="/footer.jsp"/>
     </body>
 </html>

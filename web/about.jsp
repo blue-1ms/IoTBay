@@ -31,5 +31,6 @@
         <p>
             At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.
         </p>
+        <jsp:include page="/footer.jsp"/>
     </body>
 </html>

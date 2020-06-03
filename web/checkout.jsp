@@ -23,34 +23,12 @@
 <html>
     <head>
         <title>IoTBay</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        
-        <style>
-            .logo {width: 150px;}
-            .divFloat{display: flex;
-                      justify-content: flex-end;
-                      flex-direction: row;
-                      padding: 50px 0px;
-            }
-            .checkoutHeader{display: inline-block; margin-right: auto; align-self: center;}
-            .checkoutHeader a{text-decoration: none;
-                                color: #e74c3c;  align-self: center;}
-            .checkoutBody{display: inline-block; float: right;}
-            .container{margin-top: 50px; margin-bottom: 50px;}
-        </style>
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        <jsp:include page="/header.jsp"/>
             
             <div class="container">
-                <div class="divFloat">
-                <div class="checkoutHeader">
-                    <a href="cart.jsp">< Go Back</a>
-                </div>
-                <div class="checkoutBody">
-                    <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
-                </div>
-            </div>
             <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
               <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -250,6 +228,7 @@
             </div>
           </div>
             </div>
+        <jsp:include page="/footer.jsp"/>
     </body>
 </html>
 

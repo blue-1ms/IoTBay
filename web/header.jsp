@@ -31,7 +31,7 @@
                     <div class="container">
                         <form class="form-inline" method="POST" action="searchResult.jsp">
                             <input type="text" name="producttype" class="form-control" placeholder="Search by Type" class="searchBar">
-                            <input type="image" src="images/search.svg" name="save" class="searchIcon">
+                            <input type="submit" value="search"/>
                         </form>
                     </div>
                 </li>
