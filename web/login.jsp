@@ -2,7 +2,7 @@
 
 <% 
      if (user.isValid()) {
-                response.sendRedirect("welcome.jsp");
+                response.sendRedirect("account.jsp");
             }
      
            String status=request.getParameter("status");
