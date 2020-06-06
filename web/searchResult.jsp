@@ -35,13 +35,14 @@
             <th>Product Type</font></th>
             <th>Product Description</font></th>
             <th>Product Price</font></th>
-            <th>Product Stock</font></th>
+            <th>Product Quantity</font></th>
+            <th>Product Availability</font></th>
                 <%
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/catalogue", "catalogue", "catalogue");
+                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/iotbay", "iotbay", "admin");
                     Statement st = con.createStatement();
                     ResultSet rs;
-                    PreparedStatement ps = con.prepareStatement("select * from catalogue where producttype = ?");
+                    PreparedStatement ps = con.prepareStatement("select * from catalogue where producttype =?");
                     ps.setString(1, request.getParameter("producttype"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
@@ -49,9 +50,10 @@
                      out.println("<td>" + rs.getString("productid") + "<input type='hidden' name='id' value='" + rs.getString("PRODUCTID") + "'></td>");
                      out.println("<td>" + rs.getString("productname") + "<input type='hidden' name='id' value='" + rs.getString("PRODUCTNAME") + "'></td>");
                      out.println("<td>" + rs.getString("producttype") + "<input type='hidden' name='id' value='" + rs.getString("producttype") + "'></td>");
-                     out.println("<td>" + rs.getString("productdescription") + "<input type='hidden' name='id' value='" + rs.getString("productdescription") + "'></td>");
+                     out.println("<td>" + rs.getString("productdesc") + "<input type='hidden' name='id' value='" + rs.getString("productdesc") + "'></td>");
                      out.println("<td>" + rs.getString("productprice") + "<input type='hidden' name='id' value='" + rs.getString("productprice") + "'></td>");
-                     out.println("<td>" + rs.getString("productstock") + "<input type='hidden' name='id' value='" + rs.getString("productstock") + "'></td>");
+                     out.println("<td>" + rs.getString("productquantity") + "<input type='hidden' name='id' value='" + rs.getString("productquantity") + "'></td>");
+                     out.println("<td>" + rs.getString("productavailability") + "<input type='hidden' name='id' value='" + rs.getString("productavailability") + "'></td>");
                     }
                     st.close();
                 %>

@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay</title>
+        <title>IoTBay - Catalogue</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>

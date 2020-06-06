@@ -13,68 +13,82 @@ package uts.isd.model;
 public class Product {
     
     //private properties
-    private int productID;
+   private int productID;
     private String productName;
     private String productType;
+    private String productDescription;
+    private double productPrice;
     private int productQuantity;
-    private String productStatus;
-    private boolean productAvailiability;
+    private String productAvailiability;
 
-    public Product(int productID, String productName, String productType, int productQuantity, String productStatus, boolean productAvailiability) {
+    public Product(int productID, String productName, String productType, String productDescription, 
+            double productPrice, int productQuantity, String productAvailiability) {
         this.productID = productID;
         this.productName = productName;
         this.productType = productType;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
         this.productQuantity = productQuantity;
-        this.productStatus = productStatus;
         this.productAvailiability = productAvailiability;
+       
     }
 
     public int getProductID() {
         return productID;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
-    }
-
     public String getProductName() {
         return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public String getProductType() {
         return productType;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
     }
 
     public int getProductQuantity() {
         return productQuantity;
     }
 
+    public String getProductAvailiability() {
+        return productAvailiability;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
 
-    public String getProductStatus() {
-        return productStatus;
-    }
-
-    public void setProductStatus(String productStatus) {
-        this.productStatus = productStatus;
-    }
-
-    public boolean isProductAvailiability() {
-        return productAvailiability;
-    }
-
-    public void setProductAvailiability(boolean productAvailiability) {
+    public void setProductAvailiability(String productAvailiability) {
         this.productAvailiability = productAvailiability;
     }
+
+   
     
 }
