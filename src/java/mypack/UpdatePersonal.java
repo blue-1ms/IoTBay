@@ -63,7 +63,7 @@ public class UpdatePersonal extends HttpServlet {
         
         if(result == "true"){
             user.setValid(true);
-            String sql = "SELECT * FROM USERDB.USERS WHERE customerID = " + intID + " ";
+            String sql = "SELECT * FROM IOTBAY.USERS WHERE customerID = " + intID + " ";
 
             Connection con = DatabaseConnection.getConnection();
             ResultSet rs = null;

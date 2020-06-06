@@ -51,7 +51,7 @@ public class iot_login extends HttpServlet {
         String result = logDAO.select(user);
 
         if (user.isValid()) {
-            String sql = "SELECT * FROM USERDB.USERS WHERE email = '" + email + "' AND password = '" + password + "'";
+            String sql = "SELECT * FROM IOTBAY.USERS WHERE email = '" + email + "' AND password = '" + password + "'";
 
             Connection con = DatabaseConnection.getConnection();
             ResultSet rs = null;

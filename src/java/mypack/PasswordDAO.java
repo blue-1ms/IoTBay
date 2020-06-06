@@ -31,8 +31,8 @@ public class PasswordDAO {
 
         PreparedStatement ps = null;
 
-        String sql = "UPDATE USERDB.USERS SET PASSWORD = ? WHERE CUSTOMERID = ?";
-        String sqlSelect = "SELECT * FROM USERDB.USERS WHERE customerID = " + intID + " ";
+        String sql = "UPDATE IOTBAY.USERS SET PASSWORD = ? WHERE CUSTOMERID = ?";
+        String sqlSelect = "SELECT * FROM IOTBAY.USERS WHERE customerID = " + intID + " ";
 
         Statement st = null;
         ResultSet rs = null;

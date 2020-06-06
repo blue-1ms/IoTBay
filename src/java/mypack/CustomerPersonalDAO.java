@@ -22,7 +22,7 @@ public class CustomerPersonalDAO {
         
         PreparedStatement ps = null;
         
-        String sql = "UPDATE USERDB.USERS SET EMAIL = ?, FIRSTNAME = ?, LASTNAME = ?, PHONE = ? WHERE CUSTOMERID = ?";
+        String sql = "UPDATE IOTBAY.USERS SET EMAIL = ?, FIRSTNAME = ?, LASTNAME = ?, PHONE = ? WHERE CUSTOMERID = ?";
 
         try {
             ps = con.prepareStatement(sql);
