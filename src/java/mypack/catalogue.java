@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uts.isd.model;
+package mypack;
 
-/**
- *
- * @author mscov
- */
+import java.io.Serializable;
 
-public class Product {
+public class catalogue implements Serializable {
     
     //private properties
    private int productID;
@@ -21,7 +18,7 @@ public class Product {
     private int productQuantity;
     private String productAvailiability;
 
-    public Product(int productID, String productName, String productType, String productDescription, 
+    public catalogue(int productID, String productName, String productType, String productDescription, 
             double productPrice, int productQuantity, String productAvailiability) {
         this.productID = productID;
         this.productName = productName;
@@ -92,3 +89,4 @@ public class Product {
    
     
 }
+

@@ -27,10 +27,14 @@
     </head>
     <body>
         <jsp:include page="/header.jsp"/>
+    <center>
         <h1>About Us!</h1>
         <p>
-            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.
+            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.<br>
+            <br>
+            This IoTBay project is made by Group 31 for ISD Autumn 2020.
         </p>
+        </center>
     </body>
     <jsp:include page="/footer.jsp"/>
 </html>
