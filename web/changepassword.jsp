@@ -23,7 +23,10 @@ String status = request.getParameter("status");
             stat = "Your old password does not match.";
         }
         else if (status.equals("empty")) {
-            stat = "One or more fields are empty";
+            stat = "One or more fields are empty.";
+        }
+        else if (status.equals("cannotmatch")) {
+            stat = "Your new passsword cannot match your current password.";
         }
     }
 %>
