@@ -48,7 +48,10 @@ public class PasswordDAO {
             return "false";
         }
         
-
+        if(newPassword.equals(currentPassword)){
+            return "oldNewMatch";
+        }
+        
         if (oldPassword.equals(currentPassword) && newPassword.equals(confirmPassword)) {
             try {
             ps = con.prepareStatement(sql);

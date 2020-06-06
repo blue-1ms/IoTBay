@@ -70,6 +70,9 @@ public class updatePassword extends HttpServlet {
             else if(result == "notNewMatch"){
                 response.sendRedirect("changepassword.jsp?status=newnotmatch");
             }
+            else if(result == "oldNewMatch"){
+                response.sendRedirect("changepassword.jsp?status=cannotmatch");
+            }
         else{
             response.sendRedirect("changepassword.jsp?status=error"); //error page
         }
