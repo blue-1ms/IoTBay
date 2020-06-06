@@ -7,13 +7,19 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uts.isd.model.Cart;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import uts.isd.model.*;
+import uts.isd.model.dao.*;
 
 /**
  *
@@ -48,18 +54,14 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException {
         //Check if we have cart in session state
         HttpSession session = request.getSession();
-        Cart cart = (Cart) session.getAttribute("cart");
-        
+
         //If not create cart and save in session state
+        Cart cart = (Cart) session.getAttribute("cart");        
         if (cart == null) {
-            //Create cart
             cart = new Cart();
+            session.setAttribute("cart", cart);
         }
-        
-        //Save cart in session state
-        session.setAttribute("cart", cart);
-        
-        
+                
         //Get the button name from the request
         String action = request.getParameter("action");
         
@@ -92,33 +94,68 @@ public class CheckoutController extends HttpServlet {
         //Create instance of validator class
         Validator validator = new Validator();
         
+        
         String creditCardName = request.getParameter("creditCardName");
         String creditCardNumber = request.getParameter("creditCardNumber");
         String creditCardExpiration = request.getParameter("creditCardExpiration");
         String creditCardCVV = request.getParameter("creditCardCVV");
+        
+        //TODO: Get customerID from logged in user
+        int customerID = 123;
         
         //Validate payment details
         if (validator.validateCreditCardName(creditCardName) 
                 && validator.validateCreditCardNumber(creditCardNumber) 
                 && validator.validateCreditCardExpiration(creditCardExpiration) 
                 && validator.validateCreditCardCVV(creditCardCVV)) {
-             //Redirect to confirmation
-            RequestDispatcher requestDispatcher;
-            requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/confirmation.jsp");
-            requestDispatcher.forward(request, response);
-        }
-        else{
-            //Create an error message to display
-            String error = "Invalid Payment Details";
-            request.setAttribute("PaymentError", error);
-            //Redirect back to checkout page
-            RequestDispatcher requestDispatcher;
-            requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
-            requestDispatcher.forward(request, response);
             
+            try {            
+                //Get an instance of the checkout DB manager
+                CheckoutDBManager db = this.getDBManager();
+                
+                //
+                //Determine payment type
+                int paymentType = getPaymentType(request);
+                
+                //Save payment method in database
+                Payment payment = new Payment(customerID,paymentType,creditCardName,creditCardNumber, creditCardExpiration, creditCardCVV); //creditCardName, creditCardNumber, creditCardExpiration, creditCardCVV);            
+                db.insertPayment(payment);
+                
+                System.out.println("New payment record: " + payment.getPaymentID());
+
+                //Save shipping info in database
+                // [TODO]
+
+                //Redirect to order controller and process order and invoice records
+                //[TODO]
+                RequestDispatcher requestDispatcher;
+                requestDispatcher = request.getRequestDispatcher("/order/confirmation");
+                requestDispatcher.forward(request, response);
+            }
+            catch (ClassNotFoundException | SQLException ex) {
+                //Log execption
+                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Data not entered.");
+            }            
         }
+
+        //Create an error message to display
+        String error = "Invalid Payment Details";
+        request.setAttribute("PaymentError", error);
+
+        //Redirect back to checkout page
+        RequestDispatcher requestDispatcher;
+        requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
+        requestDispatcher.forward(request, response);
+
     }
 
+    private CheckoutDBManager getDBManager() throws SQLException, ClassNotFoundException {
+        DBConnector db = new DBConnector();
+        Connection conn = db.openConnection();              
+        return new CheckoutDBManager(conn);
+    }
+   
     /**
      * Returns a short description of the servlet.
      *
@@ -128,5 +165,16 @@ public class CheckoutController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private int getPaymentType(HttpServletRequest request) {
+        String creditCardType = request.getParameter("paymentMethod");        
+        //TODO: Fix
+        if (creditCardType != null){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
 
 }

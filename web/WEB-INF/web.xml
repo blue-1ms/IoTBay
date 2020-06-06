@@ -12,6 +12,10 @@
         <servlet-name>CheckoutController</servlet-name>
         <servlet-class>uts.isd.controller.CheckoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>uts.isd.controller.OrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>testController</servlet-name>
         <url-pattern>/testController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>
         <url-pattern>/checkout/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/order/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

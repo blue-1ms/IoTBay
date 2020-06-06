@@ -50,7 +50,7 @@
        
           
             <div class="col-md-8 order-md-1">
-             <form class="needs-validation" method="post" action="checkout">
+             <form class="needs-validation" novalidate method="post" action="checkout">
             <h4 class="mb-3">Billing address</h4>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -141,10 +141,6 @@
               <div class="custom-control custom-radio">
                 <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
                 <label class="custom-control-label" for="debit">Debit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">PayPal</label>
               </div>
             </div>
             <div class="row">

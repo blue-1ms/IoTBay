@@ -4,6 +4,6 @@
     Author     : mscov
 --%>
 
-<footer></footer>
+<footer>This site was made by Group #31</footer>
 </body>
 </html>
