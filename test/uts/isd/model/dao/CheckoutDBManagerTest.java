@@ -48,6 +48,20 @@ public class CheckoutDBManagerTest {
     }
 
     /**
+     * Test of insertPayment method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testInsertPayment() throws Exception {
+        System.out.println("insertPayment");
+        Payment payment = new Payment(123, 0, "Mickey Mouse", "1234-5678-8765-4321", "10/2021", "123");
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+
+        boolean result = instance.insertPayment(payment);
+        assertTrue(result);
+        assertNotNull(payment.getPaymentID());
+    }
+
+    /**
      * Test of listPayments method, of class CheckoutDBManager.
      */
     @Test
@@ -67,7 +81,7 @@ public class CheckoutDBManagerTest {
     @Test
     public void testSelectPayment() throws Exception {
         System.out.println("selectPayment");
-        int paymentID = 4;
+        int paymentID = 1;
         CheckoutDBManager instance = new CheckoutDBManager(conn);
         
         Payment result = instance.selectPayment(paymentID);
@@ -77,27 +91,13 @@ public class CheckoutDBManagerTest {
     }
 
     /**
-     * Test of insertPayment method, of class CheckoutDBManager.
-     */
-    @Test
-    public void testInsertPayment() throws Exception {
-        System.out.println("insertPayment");
-        Payment payment = new Payment(123, 0, "Mickey Mouse", "1234-5678-8765-4321", "10/2021", "123");
-        CheckoutDBManager instance = new CheckoutDBManager(conn);
-
-        boolean result = instance.insertPayment(payment);
-        assertTrue(result);
-        assertNotNull(payment.getPaymentID());
-    }
-
-    /**
      * Test of updatePayment method, of class CheckoutDBManager.
      */
     @Test
     public void testUpdatePayment() throws Exception {
         System.out.println("updatePayment");
         Payment payment = new Payment(123, 0, "Mickey Mouse", "1234-5678-8765-4321", "10/2021", "123");
-        payment.setPaymentID(4);
+        payment.setPaymentID(1);
         CheckoutDBManager instance = new CheckoutDBManager(conn);
 
         boolean result = instance.updatePayment(payment);

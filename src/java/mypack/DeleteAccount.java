@@ -46,7 +46,7 @@ public class DeleteAccount extends HttpServlet {
         
         PreparedStatement ps = null;
         
-        String sql = "DELETE from USERDB.USERACCOUNT WHERE CUSTOMERID = ?";
+        String sql = "DELETE from IOTBAY.USERS WHERE CUSTOMERID = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, customerID);

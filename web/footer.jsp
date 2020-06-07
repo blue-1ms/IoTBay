@@ -4,6 +4,8 @@
     Author     : mscov
 --%>
 
-<footer>This site was made by Group #31</footer>
+<footer>
+    © 2020 Group 31 ISD , UTS Introduction to Software Development
+</footer>
 </body>
 </html>

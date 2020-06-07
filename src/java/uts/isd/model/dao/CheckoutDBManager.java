@@ -30,7 +30,7 @@ public class CheckoutDBManager {
         try 
         {            
             //Generate the SQL statement
-            String sql = "SELECT * FROM PAYMENT WHERE CUSTOMER_ID = ?";
+            String sql = "SELECT * FROM IOTBAY.PAYMENT WHERE CUSTOMER_ID = ?";
 
             //Prepare the statement parameters and configure to return the payment id generated
             PreparedStatement selectStatement = this.connection.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class CheckoutDBManager {
         try 
         {            
             //Generate the SQL statement
-            String sql = "SELECT * FROM PAYMENT WHERE PAYMENT_ID = ?";
+            String sql = "SELECT * FROM IOTBAY.PAYMENT WHERE PAYMENT_ID = ?";
 
             //Prepare the statement parameters and configure to return the payment id generated
             PreparedStatement selectStatement = this.connection.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class CheckoutDBManager {
         try 
         {            
             //Generate the SQL statement
-            String sql = "INSERT INTO PAYMENT (CUSTOMER_ID, PAYMENT_TYPE, CARD_NAME, CARD_NUMBER, CARD_EXPIRY, CARD_CVV) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO IOTBAY.PAYMENT (CUSTOMER_ID, PAYMENT_TYPE, CARD_NAME, CARD_NUMBER, CARD_EXPIRY, CARD_CVV) VALUES (?, ?, ?, ?, ?, ?)";
 
             //Prepare the statement parameters and configure to return the payment id generated
             PreparedStatement insertStatement = this.connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -154,7 +154,7 @@ public class CheckoutDBManager {
         try 
         {            
             //Generate the SQL statement
-            String sql = "UPDATE PAYMENT SET CUSTOMER_ID = ?, PAYMENT_TYPE = ?, CARD_NAME = ?, CARD_NUMBER = ?, CARD_EXPIRY = ?, CARD_CVV = ? WHERE PAYMENT_ID = ?";
+            String sql = "UPDATE IOTBAY.PAYMENT SET CUSTOMER_ID = ?, PAYMENT_TYPE = ?, CARD_NAME = ?, CARD_NUMBER = ?, CARD_EXPIRY = ?, CARD_CVV = ? WHERE PAYMENT_ID = ?";
 
             //Prepare the statement parameters and configure to return the payment id generated
             PreparedStatement updateStatement = this.connection.prepareStatement(sql);
@@ -193,7 +193,7 @@ public class CheckoutDBManager {
         try 
         {            
             //Generate the SQL statement
-            String sql = "DELETE FROM PAYMENT WHERE PAYMENT_ID = ?";
+            String sql = "DELETE FROM IOTBAY.PAYMENT WHERE PAYMENT_ID = ?";
 
             //Prepare the statement parameters and configure to return the payment id generated
             PreparedStatement deleteStatement = this.connection.prepareStatement(sql);

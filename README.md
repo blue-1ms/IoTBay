@@ -2,6 +2,14 @@
 This is the offical readME file for our IoTBay project.
 Within this file, will contain the nessecary steps to use our program.
 
+## Preparation
+Before using the application, the database URL, username and password for your database must be changed in the following files (assumes you're using NetBeans to view the files):
+  1. Source Packages -> mypack -> DatabaseConnection.java
+  2. Source Packages -> uts.isd.model.dao -> DB.java
+
+SQL files must be run.
+1. createDatabase.sql - this will ceate the IoTBay schema, database tables and insert sample data
+
 ## Usage
 When a users launches the site, the user will be greeted with our store's home page. Here the user can interact with our site through the nav links in the navigation bar. 
 Some of these links include

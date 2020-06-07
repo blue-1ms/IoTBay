@@ -26,32 +26,15 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="topheader">
-            <ul class="tophead">
-                <li><a class="welcome"><%= logUser%></a></li>
-                <li><a href="redirect1.jsp"><%= bar1%></a></li>
-                <li><a href="redirect2.jsp"><%= bar2%></a></li>
-            </ul>
-        </div>    
-        <header>
-            <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
-        <nav>
-            <ul class="navlinks">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="catalogue.jsp">Products</a></li>
-                <li><a href="account.jsp">Account</a></li>
-                <li><a href="about.jsp">About Us</a></li>
-            </ul>
-        </nav>
-            <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
-        </header>
-    <body>
+        <jsp:include page="/header.jsp"/>
+    <center>
         <h1>About Us!</h1>
         <p>
-            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices. <br>
-            With our online store, we hope to provide customers with around the clock access to everything IoT. <br>
-            Items purchased from our site can be either picked up at your nearest store or shipped directly to you door, through the our registered shipping partners. <br>
+            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.<br>
+            <br>
+            This IoTBay project is made by Group 31 for ISD Autumn 2020.
         </p>
+        </center>
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>

@@ -58,7 +58,7 @@ public class iot_register extends HttpServlet {
         String result = regDAO.insert(user);
 
         if (result == "true") {
-            String sql = "SELECT * FROM USERDB.USERACCOUNT WHERE email = '" + email + "' AND password = '" + password + "'";
+            String sql = "SELECT * FROM IOTBAY.USERS WHERE email = '" + email + "' AND password = '" + password + "'";
 
             Connection con = DatabaseConnection.getConnection();
             ResultSet rs = null;

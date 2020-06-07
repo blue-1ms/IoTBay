@@ -6,11 +6,9 @@
 package mypack;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,10 +20,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author charbelachmar
+ * @author blue
  */
-@WebServlet(name = "UpdatePersonal", urlPatterns = {"/UpdatePersonal"})
-public class UpdatePersonal extends HttpServlet {
+@WebServlet(name = "removeProduct", urlPatterns = {"/removeProduct"})
+public class removeProductDAO extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,59 +37,30 @@ public class UpdatePersonal extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
-            String email = request.getParameter("email");
-            email = email.toLowerCase();
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            String phone = request.getParameter("phone");
-            String customerID = request.getParameter("customerID");
-            
-            int intID = Integer.parseInt(customerID);
-            
-            UserBean user = new UserBean();
-            
-            user.setID(intID);
-            user.setEmail(email);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setPhone(phone);
-            user.setPassword(null);
-
-        CustomerPersonalDAO custDAO = new CustomerPersonalDAO();
-        String result = custDAO.update(user);
         
-        if(result == "true"){
-            user.setValid(true);
-            String sql = "SELECT * FROM IOTBAY.USERS WHERE customerID = " + intID + " ";
-
-            Connection con = DatabaseConnection.getConnection();
-            ResultSet rs = null;
-            Statement st = null;
-
-            try {
-                st = con.createStatement();
-                rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    user.setFirstName(rs.getString("firstName"));
-                    user.setLastName(rs.getString("lastName"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPhone(rs.getString("phone"));
-                    user.setPassword(rs.getString("password"));
-                    user.setID(rs.getInt("customerID"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            HttpSession session = request.getSession(true);
-            //session.setAttribute("currentSessionUser", user);
-            session.setAttribute("user", user);
-            response.sendRedirect("account.jsp");
-        }
-        else{
-            response.sendRedirect("personaldetails.jsp"); //error page
+        String productID = request.getParameter("productID");
+        //int custID = Integer.parseInt(customerID);
+        
+        Connection con = DatabaseConnection.getConnection();
+        
+        PreparedStatement ps = null;
+        
+        String sql = "DELETE from IOTBAY.CATALOGUE WHERE productID = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, productID);
+            ps.executeUpdate();
+            System.out.println(sql);
+            System.out.println(productID);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Data not deleted.");
         }
         
+        HttpSession session = request.getSession(true);
+        session.invalidate();
+        response.sendRedirect("index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

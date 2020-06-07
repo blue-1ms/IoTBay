@@ -56,6 +56,11 @@ public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //Redirect back to confirmation page
+        RequestDispatcher requestDispatcher;
+        requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/confirmation.jsp");
+        requestDispatcher.forward(request, response);        
+        
     }
 
     /**

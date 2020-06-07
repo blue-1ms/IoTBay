@@ -8,6 +8,7 @@ package mypack;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,8 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author charbelachmar
  */
-@WebServlet(name = "UpdatePersonal", urlPatterns = {"/UpdatePersonal"})
-public class UpdatePersonal extends HttpServlet {
+@WebServlet(name = "updatePassword", urlPatterns = {"/updatePassword"})
+public class updatePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,62 +37,47 @@ public class UpdatePersonal extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-            
-            String email = request.getParameter("email");
-            email = email.toLowerCase();
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            String phone = request.getParameter("phone");
-            String customerID = request.getParameter("customerID");
-            
-            int intID = Integer.parseInt(customerID);
-            
-            UserBean user = new UserBean();
-            
-            user.setID(intID);
-            user.setEmail(email);
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setPhone(phone);
-            user.setPassword(null);
-
-        CustomerPersonalDAO custDAO = new CustomerPersonalDAO();
-        String result = custDAO.update(user);
         
-        if(result == "true"){
-            user.setValid(true);
-            String sql = "SELECT * FROM USERDB.USERACCOUNT WHERE customerID = '" + intID + "' ";
-
-            Connection con = DatabaseConnection.getConnection();
-            ResultSet rs = null;
-            Statement st = null;
-
-            try {
-                st = con.createStatement();
-                rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    user.setFirstName(rs.getString("firstName"));
-                    user.setLastName(rs.getString("lastName"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPhone(rs.getString("phone"));
-                    user.setPassword(rs.getString("password"));
-                    user.setID(rs.getInt("customerID"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            String customerID = request.getParameter("customerID");
+            String oldPassword = request.getParameter("oldPassword");
+            String newPassword = request.getParameter("newPassword");
+            String confirmPassword = request.getParameter("confirmPassword");
+            String currentPassword = null;
+            
+            if(oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()){
+                response.sendRedirect("changepassword.jsp?status=empty");
             }
+            
+            else{
+            
+            Connection con = DatabaseConnection.getConnection();
+            
+            PasswordDAO passDAO = new PasswordDAO();
+            String result = passDAO.updatePassword(customerID, oldPassword, newPassword, confirmPassword);
+        
+            if(result == "true"){
             HttpSession session = request.getSession(true);
-            //session.setAttribute("currentSessionUser", user);
-            session.setAttribute("user", user);
+            session.setAttribute("password", newPassword);
             response.sendRedirect("account.jsp");
         }
+            else if(result == "notOldMatch"){
+                response.sendRedirect("changepassword.jsp?status=oldnotmatch");
+            }
+            else if(result == "notNewMatch"){
+                response.sendRedirect("changepassword.jsp?status=newnotmatch");
+            }
+            else if(result == "oldNewMatch"){
+                response.sendRedirect("changepassword.jsp?status=cannotmatch");
+            }
         else{
-            response.sendRedirect("personaldetails.jsp"); //error page
+            response.sendRedirect("changepassword.jsp?status=error"); //error page
         }
-        
+    }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -22,25 +22,7 @@
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="topheader">
-            <ul class="tophead">
-                <li><a class="welcome"><%= logUser%></a></li>
-                <li><a href="account.jsp">My Account</a></li>
-                <li><a href="logout.jsp">Logout</a></li>
-            </ul>
-        </div>    
-        <header>
-            <a href="index.jsp" class="logolink"><img class="logo" src="images/IoTBay.png" alt="logo"></a>
-        <nav>
-            <ul class="navlinks">
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="login.jsp">Products</a></li>
-                <li><a href="register.jsp">About Us</a></li>
-            </ul>
-        </nav>
-            <a href="search.jsp"><img src="images/search.svg" class="searchIcon" href="cart.jsp"></a>
-            <a href="cart.jsp"><img src="images/menucart.svg" class="cartIcon"></a>
-        </header>
+        <jsp:include page="/header.jsp"/>
 
         <div class="accountPage">
             <div class="accountFlex1">
@@ -48,7 +30,7 @@
                 <h1>Welcome, <%= user.getFirstName()%></h1>
                 <h3>Your Customer ID is <%= user.getID() %></h3>
                 <br><br><br><br>
-                <a href="account.jsp" id="manageAccount">Manage your password</a>
+                <a href="changepassword.jsp" id="manageAccount">Manage your password</a>
                 <br><br>
                 <a href="deleteaccount.jsp" id="manageAccount">Delete Account</a>
             </div>
@@ -106,4 +88,5 @@
             </div>
         </div>
     </body>
+    <jsp:include page="/footer.jsp"/>
 </html>

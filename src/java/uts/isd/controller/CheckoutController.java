@@ -114,22 +114,21 @@ public class CheckoutController extends HttpServlet {
    
     private void doPostPayment(HttpServletRequest request, HttpServletResponse response, Cart cart)
             throws ServletException, IOException {
-        //Create instance of validator class
-        Validator validator = new Validator();
-        
         //TODO: Get customerID from logged in user
         int customerID = 123;
         
         //Check if default payment method is being used
         String defaultPayment = request.getParameter("useDefaultPayment");
         if (defaultPayment == null) {
-            
             //Save new payment method for customer
             String creditCardName = request.getParameter("creditCardName");
             String creditCardNumber = request.getParameter("creditCardNumber");
             String creditCardExpiration = request.getParameter("creditCardExpiration");
             String creditCardCVV = request.getParameter("creditCardCVV");
 
+            //Create instance of validator class
+            Validator validator = new Validator();        
+            
             //Validate payment details
             if (validator.validateCreditCardName(creditCardName) 
                 && validator.validateCreditCardNumber(creditCardNumber) 
@@ -144,7 +143,7 @@ public class CheckoutController extends HttpServlet {
                     int paymentType = getPaymentType(request);
 
                     //Save payment method in database
-                    Payment payment = new Payment(customerID,paymentType,creditCardName,creditCardNumber, creditCardExpiration, creditCardCVV); //creditCardName, creditCardNumber, creditCardExpiration, creditCardCVV);            
+                    Payment payment = new Payment(customerID,paymentType,creditCardName,creditCardNumber, creditCardExpiration, creditCardCVV);
                     db.insertPayment(payment);
 
                     System.out.println("Saved new payment record: " + payment.getPaymentID());
@@ -153,6 +152,16 @@ public class CheckoutController extends HttpServlet {
                     //Log execption
                     Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Data not entered.");
+                    
+                    //Create an error message to display
+                    String error = "Failed to process payment. Please try again";
+                    request.setAttribute("PaymentError", error);
+
+                    //Redirect back to checkout page
+                    RequestDispatcher requestDispatcher;
+                    requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
+                    requestDispatcher.forward(request, response);                    
+                    
                 }  
             }
             else {
@@ -167,11 +176,12 @@ public class CheckoutController extends HttpServlet {
             }
             
         }
+        
         //Save shipping info in database
         // [TODO]
 
         //Redirect to order controller and process order and invoice records
-        //[TODO]
+        //[TODO]        
         RequestDispatcher requestDispatcher;
         requestDispatcher = request.getRequestDispatcher("/order/confirmation");
         requestDispatcher.forward(request, response);

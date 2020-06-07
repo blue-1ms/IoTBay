@@ -6,12 +6,7 @@
 package mypack;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +16,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author charbelachmar
+ * @author blue
  */
-@WebServlet(name = "DeleteAccount", urlPatterns = {"/DeleteAccount"})
-public class DeleteAccount extends HttpServlet {
+@WebServlet(name = "updateProduct", urlPatterns = {"/updateProduct"})
+public class updateProductDAO extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,33 +30,47 @@ public class DeleteAccount extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String customerID = request.getParameter("customerID");
-        //int custID = Integer.parseInt(customerID);
-        
-        Connection con = DatabaseConnection.getConnection();
-        
-        PreparedStatement ps = null;
-        
-        String sql = "DELETE from USERDB.USERACCOUNT WHERE CUSTOMERID = ?";
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setString(1, customerID);
-            ps.executeUpdate();
-            System.out.println(sql);
-            System.out.println(customerID);
+            String productID = request.getParameter("productID");
+            String productName = request.getParameter("productName");
+            String productType = request.getParameter("productType");
+            String productDescription = request.getParameter("productDescription");
+            String productPrice = request.getParameter("productPrice");
+            String productQuantity = request.getParameter("productQuantity");
+            String productAvailability = request.getParameter("productAvailability");
+            String currentProduct = null;
             
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterDAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Data not deleted.");
-        }
+            if(productID.isEmpty() || productName.isEmpty() || productType.isEmpty()||productDescription.isEmpty() || productPrice.isEmpty() || productQuantity.isEmpty()|| productAvailability.isEmpty() ){
+                response.sendRedirect("updateProduct.jsp?status=empty");
+            }
+            
+            else{
+            
+            Connection con = DatabaseConnection.getConnection();
+            
+            newProductDAO productDAO = new newProductDAO();
+            String result = productDAO.updateProductDAO(productID, productName, productType, productDescription,productPrice,productQuantity, productAvailability);
         
-        HttpSession session = request.getSession(true);
-        session.invalidate();
-        response.sendRedirect("index.jsp");
+            if("true".equals(result)){
+            HttpSession session = request.getSession(true);
+            session.setAttribute("productID", productID);
+            session.setAttribute("productName", productName);
+            session.setAttribute("productType", productType);
+            session.setAttribute("productDescription", productDescription);
+            session.setAttribute("productPrice", productPrice);
+            session.setAttribute("productQuantity", productQuantity);
+            session.setAttribute("productAvailability", productAvailability);
+            response.sendRedirect("catalogue.jsp");
+        }
+        else{
+            response.sendRedirect("errorupdating.jsp?status=error"); //error page
+        }
+    }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
