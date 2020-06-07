@@ -14,6 +14,8 @@
 %>
 
 <jsp:include page="/header.jsp"/> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">    
             
 <div class="container mt-4">
     <div class="row">
