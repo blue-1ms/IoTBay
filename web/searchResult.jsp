@@ -39,7 +39,7 @@
             <th>Product Availability</font></th>
                 <%
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/sample", "app", "app");
+                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/IotBay", "iotadmin", "admin");
                     Statement st = con.createStatement();
                     ResultSet rs;
                     PreparedStatement ps = con.prepareStatement("select * from IOTBAY.catalogue where producttype =?");

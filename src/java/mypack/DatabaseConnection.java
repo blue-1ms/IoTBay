@@ -16,9 +16,9 @@ import java.util.logging.Logger;
  * @author charbelachmar
  */
 public class DatabaseConnection {
-    private static String dburl="jdbc:derby://localhost:1527/sample";
-    private static String dbusername="app";
-    private static String dbpassword="app";
+    private static String dburl="jdbc:derby://localhost:1527/IoTBay";
+    private static String dbusername="iotadmin";
+    private static String dbpassword="admin";
     
     
         public static Connection getConnection(){

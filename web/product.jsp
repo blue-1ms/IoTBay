@@ -30,20 +30,24 @@
 
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col product">
             
-                    <div class="product">
-                        <h1>Hello!</h1>
+                    <form action="cart" method="post">
                         <h2>Product</h2>
                         <h3>Price</h3>
                         <h3>Description</h3>
-                        <p>Product Description</p>            
-                    </div>
+                        <p>Product Description</p>
+                        <!-- Please provide product ID here -->
+                        <input type="hidden" value="0161239861" name="productID">
+                        <button type="submit" name="action" value="add">Add to Cart</button>
+                    </form>
 
                 </div>
             </div>
         </div>
-            
+
+        <jsp:include page="/footer.jsp"/>
+
     </body>
     <jsp:include page="/footer.jsp"/>
 </html>
