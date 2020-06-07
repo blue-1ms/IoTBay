@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
+import uts.isd.model.dao.*;
 
 /**
  *
@@ -34,7 +35,16 @@ public class LoginDAO {
          String sql = "SELECT * FROM IOTBAY.USERS WHERE email = '"+email+"' AND password = '"+password+"'";
 
 
-         Connection con = DatabaseConnection.getConnection();
+         DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
          
         try{
          st = con.createStatement();

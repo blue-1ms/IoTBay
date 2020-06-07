@@ -53,7 +53,17 @@ public class iot_login extends HttpServlet {
         if (user.isValid()) {
             String sql = "SELECT * FROM IOTBAY.USERS WHERE email = '" + email + "' AND password = '" + password + "'";
 
-            Connection con = DatabaseConnection.getConnection();
+            DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             ResultSet rs = null;
             Statement st = null;
 

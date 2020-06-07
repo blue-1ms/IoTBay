@@ -42,7 +42,16 @@ public class DeleteAccount extends HttpServlet {
         String customerID = request.getParameter("customerID");
         //int custID = Integer.parseInt(customerID);
         
-        Connection con = DatabaseConnection.getConnection();
+        DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         PreparedStatement ps = null;
         

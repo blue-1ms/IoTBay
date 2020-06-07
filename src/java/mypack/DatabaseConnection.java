@@ -10,32 +10,26 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uts.isd.model.dao.DB;
 
 /**
  *
  * @author charbelachmar
  */
-public class DatabaseConnection {
-    private static String dburl="jdbc:derby://localhost:1527/IoTBay";
-    private static String dbusername="iotadmin";
-    private static String dbpassword="admin";
+public class DatabaseConnection extends DB{
+
     
     
-        public static Connection getConnection(){
+        public Connection getConnection() throws ClassNotFoundException, SQLException{
         Connection con = null;
 
         try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            Class.forName(driver);
+            con = DriverManager.getConnection(URL, dbuser, dbpass);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-
-        try {
-            con = DriverManager.getConnection(dburl, dbusername, dbpassword);
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return con;
         }
     

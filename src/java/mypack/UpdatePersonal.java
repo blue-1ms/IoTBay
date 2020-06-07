@@ -65,7 +65,16 @@ public class UpdatePersonal extends HttpServlet {
             user.setValid(true);
             String sql = "SELECT * FROM IOTBAY.USERS WHERE customerID = " + intID + " ";
 
-            Connection con = DatabaseConnection.getConnection();
+            DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             ResultSet rs = null;
             Statement st = null;
 
