@@ -77,6 +77,7 @@ public class iot_login extends HttpServlet {
                     user.setPhone(rs.getString("phone"));
                     user.setPassword(rs.getString("password"));
                     user.setID(rs.getInt("customerID"));
+                    user.setType(rs.getString("accounttype"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -38,6 +38,7 @@ public class iot_register extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String phone = request.getParameter("phone");
         String password = request.getParameter("password");
+        String type = "customer";
         boolean valid = false;
         int customerID = 0;
         
@@ -53,7 +54,7 @@ public class iot_register extends HttpServlet {
         
         else{
             
-        UserBean user = new UserBean(customerID, email, firstName, lastName, phone, password, valid);
+        UserBean user = new UserBean(customerID, email, firstName, lastName, phone, password, valid, type);
         RegisterDAO regDAO = new RegisterDAO();
         String result = regDAO.insert(user);
 
@@ -83,6 +84,7 @@ public class iot_register extends HttpServlet {
                     user.setPhone(rs.getString("phone"));
                     user.setPassword(rs.getString("password"));
                     user.setID(rs.getInt("customerID"));
+                    user.setType(rs.getString("accounttype"));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);

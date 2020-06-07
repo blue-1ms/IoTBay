@@ -25,12 +25,12 @@ public class UserBean implements Serializable {
     
    
     
-    private String email, firstName, lastName, phone, password;
+    private String email, firstName, lastName, phone, password, type;
     private int customerID;
     private boolean valid;
    // private static String loggedIn = "false";
 
-    public UserBean(int customerID, String email, String firstName, String lastName, String phone, String password, boolean valid) {
+    public UserBean(int customerID, String email, String firstName, String lastName, String phone, String password, boolean valid, String type) {
         this.customerID = customerID;
         this.email = email;
         this.firstName = firstName;
@@ -38,6 +38,7 @@ public class UserBean implements Serializable {
         this.phone = phone;
         this.password = password;
         this.valid = valid;
+        this.type = type;
     }
 
     public UserBean() {
@@ -49,8 +50,16 @@ public class UserBean implements Serializable {
         return customerID;
     }
     
+    public String getType(){
+        return type;
+}
+    
     public void setID(int customerID){
         this.customerID = customerID;
+    }
+    
+    public void setType(String type){
+        this.type = type;
     }
 
     public String getEmail() {

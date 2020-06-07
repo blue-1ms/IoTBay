@@ -73,6 +73,7 @@ public class LoginDAO {
                     userAccount.setPhone(rs.getString("phone"));
                     userAccount.setPassword(rs.getString("password"));
                     userAccount.setID(rs.getInt("customerID"));
+                    userAccount.setType(rs.getString("accounttype"));
             }
         }catch(SQLException ex) {
             Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);

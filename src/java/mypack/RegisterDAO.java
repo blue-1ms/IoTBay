@@ -35,7 +35,7 @@ public class RegisterDAO {
         
         PreparedStatement ps = null;
         
-        String sql = "insert into IOTBAY.USERS (EMAIL, FIRSTNAME, LASTNAME, PHONE, PASSWORD) values(?,?,?,?,?)";
+        String sql = "insert into IOTBAY.USERS (EMAIL, FIRSTNAME, LASTNAME, PHONE, PASSWORD, ACCOUNTTYPE) values(?,?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, userAccount.getEmail());
@@ -43,6 +43,7 @@ public class RegisterDAO {
             ps.setString(3, userAccount.getLastName());
             ps.setString(4, userAccount.getPhone());
             ps.setString(5, userAccount.getPassword());
+            ps.setString(6, "customer");
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(RegisterDAO.class.getName()).log(Level.SEVERE, null, ex);
