@@ -39,16 +39,16 @@
             <th>Product Availability</font></th>
                 <%
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/iotbay", "iotbay", "admin");
+                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/sample", "app", "app");
                     Statement st = con.createStatement();
                     ResultSet rs;
-                    PreparedStatement ps = con.prepareStatement("select * from catalogue where producttype =?");
+                    PreparedStatement ps = con.prepareStatement("select * from IOTBAY.catalogue where producttype =?");
                     ps.setString(1, request.getParameter("producttype"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
                      out.println("<tr>");
                      out.println("<td>" + rs.getString("productid") + "<input type='hidden' name='id' value='" + rs.getString("PRODUCTID") + "'></td>");
-                     out.println("<td>" + rs.getString("productname") + "<input type='hidden' name='id' value='" + rs.getString("PRODUCTNAME") + "'></td>");
+                     out.println("<td>" + rs.getString("productname") + "<input type='hcatalogueidden' name='id' value='" + rs.getString("PRODUCTNAME") + "'></td>");
                      out.println("<td>" + rs.getString("producttype") + "<input type='hidden' name='id' value='" + rs.getString("producttype") + "'></td>");
                      out.println("<td>" + rs.getString("productdesc") + "<input type='hidden' name='id' value='" + rs.getString("productdesc") + "'></td>");
                      out.println("<td>" + rs.getString("productprice") + "<input type='hidden' name='id' value='" + rs.getString("productprice") + "'></td>");
