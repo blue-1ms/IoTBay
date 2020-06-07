@@ -53,9 +53,9 @@ CREATE TABLE IOTBAY.Payment
 );
 
 -- Drop table so we can start fresh
-DROP TABLE Shipping;
+DROP TABLE IOTBAY.Shipping;
 -- Create table
-CREATE TABLE Shipping
+CREATE TABLE IOTBAY.Shipping
 (
     Shipping_ID INT NOT NULL GENERATED ALWAYS AS IDENTITY,
     Customer_ID INT,
