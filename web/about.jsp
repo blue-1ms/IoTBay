@@ -4,37 +4,19 @@
     Author     : mscov
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
-<jsp:setProperty name="user" property="*"/>
+<jsp:include page="/header.jsp"/>
 
-<% 
-    String bar1 = "Login";
-    String bar2 = "Register";
-    String logUser = "Welcome!";
-    if (user.isValid()) {
-        bar1 = "My Account";
-        bar2 = "Logout";
-        logUser = "Welcome, " + user.getFirstName() + "!";
-    }
-%>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>IoTBay</title>
-        <link href="css/style.css" type="text/css" rel="stylesheet"/>
-    </head>
-    <body>
-        <jsp:include page="/header.jsp"/>
-    <center>
-        <h1>About Us!</h1>
-        <p>
-            At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.<br>
-            <br>
-            This IoTBay project is made by Group 31 for ISD Autumn 2020.
-        </p>
-        </center>
-    </body>
-    <jsp:include page="/footer.jsp"/>
-</html>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1>About Us!</h1>
+            <p>
+                At IoTBay our goal is to provide customers with the best quality IoT components at affordable prices.<br>
+                <br>
+                This IoTBay project is made by Group 31 for ISD Autumn 2020.
+            </p>
+        </div>
+    </div>
+</div>
+    
+<jsp:include page="/footer.jsp"/>

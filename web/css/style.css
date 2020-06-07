@@ -262,26 +262,25 @@ button:hover{
     transform: scale(0.98);
 }
 
-
-.container input[type=text] {
+.searchcontainer input[type=text] {
   padding: 10px 20px;
   border: none;
   width: 150px;
   transition: all 0.3s ease 0s;
 }
 
-.container input[type=text]:focus-within{
+.searchcontainer input[type=text]:focus-within{
   width: 250px;
 }
 
-.container{
+.searchcontainer {
       background-color: #fff;
       padding: 5px 10px;
       transition: all 0.3s ease 0s;
       border:1px solid #fff;
 }
 
-.container:focus-within{
+.searchcontainer:focus-within{
 border:1px solid #e74c3c;
 }
 

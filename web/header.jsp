@@ -1,6 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import ="java.sql.*" %>
-<% Class.forName("org.apache.derby.jdbc.ClientDriver");%>
 <jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
 <jsp:setProperty name="user" property="*"/>
 
@@ -30,7 +28,7 @@
                 <li><a href="redirect1.jsp"><%= bar1%></a></li>
                 <li><a href="redirect2.jsp"><%= bar2%></a></li>
                 <li>
-                    <div class="container">
+                    <div class="searchcontainer">
                         <form class="form-inline" method="POST" action="searchResult.jsp">
                             <input type="text" name="producttype" class="form-control" placeholder="Search by Type (components, kit)" class="searchBar">
                             <input type="image" src="images/search.svg" name="save" class="searchIcon">
@@ -51,5 +49,3 @@
                 </ul>
             </nav>
         </header>
-    </body>
-</html>

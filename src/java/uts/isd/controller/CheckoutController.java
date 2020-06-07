@@ -187,6 +187,13 @@ public class CheckoutController extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
+    /**
+     * Create an instance of our database manager
+     * 
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */    
     private CheckoutDBManager getDBManager() throws SQLException, ClassNotFoundException {
         DBConnector db = new DBConnector();
         Connection conn = db.openConnection();              
