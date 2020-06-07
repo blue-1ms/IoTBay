@@ -22,7 +22,16 @@ public class PasswordDAO {
 
     public String updatePassword(String customerID, String oldPassword, String newPassword, String confirmPassword) {
 
-        Connection con = DatabaseConnection.getConnection();
+        DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         
         String currentPassword = null;

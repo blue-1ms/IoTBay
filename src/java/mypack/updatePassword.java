@@ -54,7 +54,16 @@ public class updatePassword extends HttpServlet {
             
             else{
             
-            Connection con = DatabaseConnection.getConnection();
+            DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             PasswordDAO passDAO = new PasswordDAO();
             String result = passDAO.updatePassword(customerID, oldPassword, newPassword, confirmPassword);

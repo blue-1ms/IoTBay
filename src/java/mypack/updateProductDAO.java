@@ -7,6 +7,9 @@ package mypack;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +53,16 @@ public class updateProductDAO extends HttpServlet {
             
             else{
             
-            Connection con = DatabaseConnection.getConnection();
+            DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             newProductDAO productDAO = new newProductDAO();
             String result = productDAO.updateProductDAO(productID, productName, productType, productDescription,productPrice,productQuantity, productAvailability);

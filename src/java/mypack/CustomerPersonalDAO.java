@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import uts.isd.model.dao.*;
 /**
  *
  * @author charbelachmar
@@ -18,7 +18,16 @@ import java.util.logging.Logger;
 public class CustomerPersonalDAO {
     public String update(UserBean userAccount){
         
-        Connection con = DatabaseConnection.getConnection();
+        DatabaseConnection conn = new DatabaseConnection();
+            
+            Connection con = null;
+            try {
+                con = conn.getConnection();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(iot_login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         PreparedStatement ps = null;
         
