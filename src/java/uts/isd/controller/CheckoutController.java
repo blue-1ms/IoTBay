@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mypack.UserBean;
 
 import uts.isd.model.*;
 import uts.isd.model.dao.*;
@@ -86,8 +87,8 @@ public class CheckoutController extends HttpServlet {
         
         try
         {
-            //TODO: Get customerID from logged in user
-            int customerID = 123;
+            //Get customerID of logged in user
+            int customerID = getCustomerID(request.getSession());
 
             //Check if customer has a payment method saved
             CheckoutDBManager db = this.getDBManager();
@@ -114,8 +115,9 @@ public class CheckoutController extends HttpServlet {
    
     private void doPostPayment(HttpServletRequest request, HttpServletResponse response, Cart cart)
             throws ServletException, IOException {
-        //TODO: Get customerID from logged in user
-        int customerID = 123;
+
+        //Get customerID of logged in user
+        int customerID = getCustomerID(request.getSession());
         
         //Check if default payment method is being used
         String defaultPayment = request.getParameter("useDefaultPayment");
@@ -186,7 +188,7 @@ public class CheckoutController extends HttpServlet {
         requestDispatcher = request.getRequestDispatcher("/order/confirmation");
         requestDispatcher.forward(request, response);
     }
-
+    
     /**
      * Create an instance of our database manager
      * 
@@ -200,6 +202,21 @@ public class CheckoutController extends HttpServlet {
         return new CheckoutDBManager(conn);
     }
    
+    /**
+     * 
+     * @param session
+     * @return 
+     */
+    private int getCustomerID(HttpSession session) {
+        
+        //Get logged in user from session
+        UserBean user = (UserBean) session.getAttribute("user");  
+        
+        //Return customer id of logged in user
+        return user.getID();
+    }
+
+    
     /**
      * Returns a short description of the servlet.
      *

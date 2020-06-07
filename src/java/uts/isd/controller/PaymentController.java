@@ -17,6 +17,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import mypack.UserBean;
+import uts.isd.model.Cart;
 import uts.isd.model.Payment;
 import uts.isd.model.dao.CheckoutDBManager;
 import uts.isd.model.dao.DBConnector;
@@ -42,8 +45,8 @@ public class PaymentController extends HttpServlet {
         
         try
         {
-            //TODO: Get customerID from logged in user
-            int customerID = 123;
+            //Get customerID of logged in user
+            int customerID = getCustomerID(request.getSession());
 
             //Check if customer has a payment method saved
             CheckoutDBManager db = this.getDBManager();
@@ -124,8 +127,8 @@ public class PaymentController extends HttpServlet {
             && validator.validateCreditCardCVV(creditCardCVV)) {
 
             try {            
-                //TODO: Get customerID from logged in user
-                int customerID = 123;
+                //Get customerID of logged in user
+                int customerID = getCustomerID(request.getSession());
 
                 //Get an instance of the checkout DB manager
                 CheckoutDBManager db = this.getDBManager();
@@ -191,9 +194,6 @@ public class PaymentController extends HttpServlet {
             && validator.validateCreditCardCVV(creditCardCVV)) {
 
             try {            
-                //TODO: Get customerID from logged in user
-                int customerID = 123;
-
                 //Get an instance of the checkout DB manager
                 CheckoutDBManager db = this.getDBManager();
                 
@@ -282,6 +282,20 @@ public class PaymentController extends HttpServlet {
         
     }
 
+    /**
+     * 
+     * @param session
+     * @return 
+     */
+    private int getCustomerID(HttpSession session) {
+        
+        //Get logged in user from session
+        UserBean user = (UserBean) session.getAttribute("user");  
+        
+        //Return customer id of logged in user
+        return user.getID();
+    }
+    
     /**
      * 
      * @param request
