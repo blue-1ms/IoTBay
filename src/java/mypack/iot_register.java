@@ -42,7 +42,11 @@ public class iot_register extends HttpServlet {
         boolean valid = false;
         int customerID = 0;
         
+        phone = phone.replaceAll("\\s+","");
+
+        
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regexphone = "^(?:\\+?(61))? ?(?:\\((?=.*\\)))?(0?[2-57-8])\\)? ?(\\d\\d(?:[- ](?=\\d{3})|(?!\\d\\d[- ]?\\d[- ]))\\d\\d[- ]?\\d[- ]?\\d{3})$";
         
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()
                 || phone.isEmpty() || password.isEmpty()) {
@@ -50,6 +54,10 @@ public class iot_register extends HttpServlet {
         
         else if(! email.matches(regex)){
             response.sendRedirect("register.jsp?status=email");
+        }
+        
+        else if(! phone.matches(regexphone)){
+            response.sendRedirect("register.jsp?status=phone");
         }
         
         else{

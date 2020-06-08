@@ -47,6 +47,24 @@ public class UpdatePersonal extends HttpServlet {
             String phone = request.getParameter("phone");
             String customerID = request.getParameter("customerID");
             
+            phone = phone.replaceAll("\\s+","");
+            
+            String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+            String regexphone = "^(?:\\+?(61))? ?(?:\\((?=.*\\)))?(0?[2-57-8])\\)? ?(\\d\\d(?:[- ](?=\\d{3})|(?!\\d\\d[- ]?\\d[- ]))\\d\\d[- ]?\\d[- ]?\\d{3})$";
+            
+             if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()
+                || phone.isEmpty()){
+            response.sendRedirect("personaldetails.jsp?status=empty");}
+        
+        else if(! email.matches(regex)){
+            response.sendRedirect("personaldetails.jsp?status=email");
+        }
+        
+        else if(! phone.matches(regexphone)){
+            response.sendRedirect("personaldetails.jsp?status=phone");
+        }
+        
+        else{
             int intID = Integer.parseInt(customerID);
             
             UserBean user = new UserBean();
@@ -101,6 +119,7 @@ public class UpdatePersonal extends HttpServlet {
             response.sendRedirect("personaldetails.jsp"); //error page
         }
         
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
