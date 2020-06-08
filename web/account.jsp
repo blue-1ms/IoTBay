@@ -10,11 +10,14 @@
 <jsp:include page="/header.jsp"/>
 
 <%
+    String accType = "null";
     if (!user.isValid()) {
+        accType = "null";
         response.sendRedirect("login.jsp?status=login");
     }
-    String accType = user.getType();
-    accType = accType.substring(0, 1).toUpperCase() + accType.substring(1);
+    else{
+    accType = user.getType();
+    accType = accType.substring(0, 1).toUpperCase() + accType.substring(1);}
 
 %>
 
