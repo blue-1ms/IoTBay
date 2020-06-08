@@ -29,13 +29,14 @@ String status = request.getParameter("status");
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Main Page</title>
+        <title>Update Details</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
         <jsp:include page="/header.jsp"/>
         <form action="UpdatePersonal" method="post" class="formStyle" id="account">
                 <h1>Update Profile Details</h1>
+                <p><%= stat %></p>
                 <br>
                 <ul>
                     <li name="customerID" class="hiddenli">
