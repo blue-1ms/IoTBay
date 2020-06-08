@@ -18,6 +18,18 @@ public class Shipping {
     private String country;
     private String state;
     private String postCode;
+
+    public Shipping() {
+    }
+    
+    public Shipping(int customerID, String addressLine1, String addressLine2, String country, String state, String postCode) {
+        this.customerID = customerID;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.country = country;
+        this.state = state;
+        this.postCode = postCode;
+    }
     
     
     //Getters and Setters for the defined elements of the model

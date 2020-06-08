@@ -7,20 +7,20 @@
 <%@page import="uts.isd.model.Payment"%>
 <%@page import="uts.isd.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
+<jsp:useBean id="cart" class="uts.isd.model.Cart" scope="session"/>
+<jsp:setProperty name="cart" property="*"/>
 
 <% 
-    //Cart Handling
-    Cart cart = (Cart) session.getAttribute("cart");
     //Check for error message
     String paymentError = (String) request.getAttribute("PaymentError");    
     //Check for shipping
-    String billingError = (String) request.getAttribute("BillingError");
-    
+    String shippingError = (String) request.getAttribute("ShippingError");
 %>
+
 <jsp:include page="/header.jsp"/> 
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">    
-<div class="container mt-4">
+
+<div class="container mt-4 mb-4">
     <div class="row">
         
         <div class="col-md-4 order-md-2 mb-4">
@@ -53,19 +53,31 @@
         <div class="col-md-8 order-md-1">
             <form class="needs-validation" novalidate method="post" action="checkout">
                 
-                <h4 class="mb-3">Billing address</h4>
+                <h4 class="mb-3">Shipping address</h4>
+
+                <%
+                    //Check for default shipping details
+                    Shipping defaultShipping = (Shipping) request.getAttribute("defaultShipping");
+                %>
+                
+                <% if (defaultShipping != null) { %>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="useDefaultShipping" name="useDefaultShipping" checked="">
+                      <label class="custom-control-label" for="useDefaultShipping">Use default shipping details</label>
+                    </div>
+                <% } %>
                 
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="firstName" placeholder="" required="" name="firstName" value="<%= (user.getFirstName() != null) ? user.getFirstName(): "" %>">
                     <div class="invalid-feedback">
                       Valid first name is required.
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" id="lastName" placeholder="" required="" name="lastName" value="<%= (user.getFirstName() != null) ? user.getLastName(): "" %>">
                     <div class="invalid-feedback">
                       Valid last name is required.
                     </div>
@@ -74,31 +86,31 @@
                 
                 <div class="mb-3">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="you@example.com" required="">
+                  <input type="email" class="form-control" id="email" placeholder="you@example.com" required="" name="email" value="<%= (user.getEmail() != null) ? user.getEmail(): "" %>">
                   <div class="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                   </div>
-                </div>
+                </div>                
                 
                 <div class="mb-3">
-                  <label for="address">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                  <label for="address1">Address 1</label>
+                  <input type="text" class="form-control" id="address1" placeholder="1234 Main St" required="" name="address1" value="<%= (defaultShipping != null) ? defaultShipping.getAddressLine1() : "" %>">
                   <div class="invalid-feedback">
                     Please enter your shipping address.
                   </div>
                 </div>
-
+ 
                 <div class="mb-3">
                   <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                  <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                  <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" name="address2" value="<%= (defaultShipping != null && defaultShipping.getAddressLine2() != null) ? defaultShipping.getAddressLine2() : "" %>">
                 </div>
 
                 <div class="row">
                   <div class="col-md-5 mb-3">
                     <label for="country">Country</label>
-                    <select class="custom-select d-block w-100" id="country" required="">
+                    <select class="custom-select d-block w-100" id="country" required="" name="country">
                       <option value="">Choose...</option>
-                      <option>Australia</option>
+                      <option value="Australia" <%= (defaultShipping != null && defaultShipping.getCountry().equals("Australia")) ? "selected" : "" %> >Australia</option>
                     </select>
                     <div class="invalid-feedback">
                       Please select a valid country.
@@ -106,33 +118,43 @@
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="state">State</label>
-                    <select class="custom-select d-block w-100" id="state" required="">
+                    <select class="custom-select d-block w-100" id="state" required="" name="state">
                       <option value="">Choose...</option>
-                      <option>NSW</option>
-                      <option>ACT</option>
-                      <option>SA</option>
-                      <option>VIC</option>
-                      <option>WA</option>
-                      <option>QLD</option>
-                      <option>TAS</option>
+                      <option value="NSW" <%= (defaultShipping != null && defaultShipping.getState().equals("NSW")) ? "selected" : "" %> >NSW</option>
+                      <option value="ACT" <%= (defaultShipping != null && defaultShipping.getState().equals("ACT")) ? "selected" : "" %> >ACT</option>
+                      <option value="VIC" <%= (defaultShipping != null && defaultShipping.getState().equals("VIC")) ? "selected" : "" %> >VIC</option>
+                      <option value="QLD" <%= (defaultShipping != null && defaultShipping.getState().equals("QLD")) ? "selected" : "" %> >QLD</option>
+                      <option value="TAS" <%= (defaultShipping != null && defaultShipping.getState().equals("TAS")) ? "selected" : "" %> >TAS</option>
+                      <option value="SA" <%= (defaultShipping != null && defaultShipping.getState().equals("SA")) ? "selected" : "" %> >SA</option>
+                      <option value="WA" <%= (defaultShipping != null && defaultShipping.getState().equals("WA")) ? "selected" : "" %> >WA</option>
+                      <option value="NT" <%= (defaultShipping != null && defaultShipping.getState().equals("NT")) ? "selected" : "" %> >NT</option>
                     </select>
                     <div class="invalid-feedback">
                       Please provide a valid state.
                     </div>
                   </div>
                   <div class="col-md-3 mb-3">
-                    <label for="zip">Post Code</label>
-                    <input type="text" class="form-control" id="zip" placeholder="" required="">
+                    <label for="postCode">Post Code</label>
+                    <input type="text" class="form-control" id="postCode" placeholder="" required="" name="postCode" value="<%= (defaultShipping != null) ? defaultShipping.getPostCode(): "" %>">
                     <div class="invalid-feedback">
                       Post code required.
                     </div>
                   </div>
                 </div>
+                <!--
                 <hr class="mb-4">
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="same-address">
                   <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
                 </div>
+                -->
+                
+                <% if (shippingError != null) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= shippingError %>
+                </div>  
+                <% } %>            
+                
                 <hr class="mb-4">
 
                 <h4 class="mb-3">Payment</h4>
@@ -198,7 +220,7 @@
                 </div>  
                 <% } %>            
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit" name="action" value="payment">Make Payment</button>
+                <button class="btn btn-primary btn-lg btn-block mb-4" type="submit" name="action" value="payment">Make Payment</button>
             </form>
         </div>
                  

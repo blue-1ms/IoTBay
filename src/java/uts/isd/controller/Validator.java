@@ -36,10 +36,12 @@ package uts.isd.controller;
 
    }       
 
-   public boolean checkEmpty(String email, String password){       
-
-      return  email.isEmpty() || password.isEmpty();   
-
+   public boolean checkEmpty(String toBeChecked){       
+        //Check for null
+        if (toBeChecked == null) {
+            return true;
+        }
+        return toBeChecked.isEmpty();
    }
 
    

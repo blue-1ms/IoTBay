@@ -17,6 +17,8 @@
 <html>
     <head>
         <title>IoTBay</title>    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">        
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
