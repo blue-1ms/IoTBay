@@ -13,7 +13,9 @@
     if (!user.isValid()) {
         response.sendRedirect("login.jsp?status=login");
     }
-    String logUser = "Welcome, " + user.getFirstName() + "!";
+    String accType = user.getType();
+    accType = accType.substring(0, 1).toUpperCase() + accType.substring(1);
+
 %>
 
 
@@ -21,7 +23,7 @@
     <div class="accountFlex1">
         <img src="images/accountIcon.svg" class="accountIcon">
         <h1>Welcome, <%= user.getFirstName()%></h1>
-        <h3>Your Customer ID is <%= user.getID() %></h3>
+        <h3>Your <%= accType%> ID is <%= user.getID() %></h3>
         <br><br><br><br>
         <a href="changepassword.jsp" id="manageAccount">Manage your password</a>
         <br><br>
