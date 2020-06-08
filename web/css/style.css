@@ -142,14 +142,20 @@ a.button:active{
     background-color: #e5e5e5;
 }
 /*#24252a*/
-.tophead{
+.tophead a{
     list-style: none;
+    text-decoration: none;
+}
+
+.navlinks a{
+    text-decoration: none;
 }
 
 .tophead li{
     display: inline-block;
     padding: 0px 20px;
     align-items: center;
+    margin-top: 10px;
 }
 
 .tophead li a{
@@ -265,12 +271,16 @@ button:hover{
 .searchcontainer input[type=text] {
   padding: 10px 20px;
   border: none;
-  width: 150px;
+  width: 250px;
   transition: all 0.3s ease 0s;
+  font-size: 12px;
+  border: none;
 }
 
 .searchcontainer input[type=text]:focus-within{
-  width: 250px;
+  width: 350px;
+  outline-style: none;
+  box-shadow: none;
 }
 
 .searchcontainer {
@@ -359,7 +369,7 @@ div.divider{
     display: block;
     float: left;
     margin-top: -35px;
-    height: 14px;
+    height: 16px;
     color: #B9B9B9;
     font-size: 14px;
     overflow: hidden;
