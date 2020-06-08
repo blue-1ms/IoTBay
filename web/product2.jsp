@@ -49,7 +49,6 @@
                         <p>A 1.5GHz quad-core 64-bit ARM Cortex-A72 CPU (~3× performance) 1GB, 2GB, or 4GB of LPDDR4 SDRAM. Full-throughput Gigabit Ethernet. Dual-band 802.11ac wireless networking.</p>
                         <!-- Please provide product ID here -->
                         <input type="hidden" value="1" name="productID">
-                        <input type="hidden" value="1" name="productID">
                         
                         <button type="submit" name="action" value="add">Add to Cart</button>
                     </form>
