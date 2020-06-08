@@ -41,6 +41,12 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //Should not happen. Redirect back to home if it does
+        RequestDispatcher requestDispatcher;
+        requestDispatcher = request.getRequestDispatcher("index.jsp");
+        requestDispatcher.forward(request, response);
+        
     }
 
     /**
@@ -90,8 +96,18 @@ public class CheckoutController extends HttpServlet {
             //Get customerID of logged in user
             int customerID = getCustomerID(request.getSession());
 
-            //Check if customer has a payment method saved
+            //Create an instance of our checkout database manager
             CheckoutDBManager db = this.getDBManager();
+
+            //Check if customer has shipping details saved
+            List<Shipping> shippingDetails = db.listShipping(customerID);
+            if (shippingDetails.isEmpty() == false) {
+                //Get default shipping address (use the first one for now)
+                //Add to request so we can show at checkout
+                request.setAttribute("defaultShipping", shippingDetails.get(0));                
+            }
+            
+            //Check if customer has a payment method saved
             List<Payment> payments = db.listPayments(customerID);
             if (payments.isEmpty() == false) {
                 //Get default payment method (use the first one for now)
@@ -118,6 +134,66 @@ public class CheckoutController extends HttpServlet {
 
         //Get customerID of logged in user
         int customerID = getCustomerID(request.getSession());
+
+        //Check if default shipping details is being used
+        String defaultShipping = request.getParameter("useDefaultShipping");
+        if (defaultShipping == null) {
+            //Save new shipping details for customer
+            String address1 = request.getParameter("address1");
+            String address2 = request.getParameter("address2");
+            String country = request.getParameter("country");
+            String state = request.getParameter("state");
+            String postCode = request.getParameter("postCode");
+
+            //Create instance of validator class
+            Validator validator = new Validator();        
+            
+            //Validate shipping details
+            if (!validator.checkEmpty(address1) 
+                && !validator.checkEmpty(country) 
+                && !validator.checkEmpty(state) 
+                && !validator.checkEmpty(postCode) ) { 
+            
+                try {            
+                    //Get an instance of the checkout DB manager
+                    CheckoutDBManager db = this.getDBManager();
+
+                    //Save shipping details in database
+                    Shipping shipping = new Shipping(customerID, address1, address2, country, state, postCode);                    
+                    db.insertShipping(shipping);
+
+                    System.out.println("Saved new shipping record: " + shipping.getShippingID());
+                }
+                catch (ClassNotFoundException | SQLException ex) {
+                    //Log execption
+                    Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                    //Create an error message to display
+                    String error = "Failed to process shipping details. Please try again";
+                    request.setAttribute("ShippingError", error);
+
+                    //Redirect back to checkout page
+                    RequestDispatcher requestDispatcher;
+                    requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
+                    requestDispatcher.forward(request, response);
+
+                    return;                    
+                }  
+            }
+            else {
+                //Create an error message to display
+                String error = "Failed to process shipping details. Please try again";
+                request.setAttribute("ShippingError", error);
+
+                //Redirect back to checkout page
+                RequestDispatcher requestDispatcher;
+                requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
+                requestDispatcher.forward(request, response);  
+                
+                return;
+            }
+            
+        }
         
         //Check if default payment method is being used
         String defaultPayment = request.getParameter("useDefaultPayment");
@@ -164,6 +240,7 @@ public class CheckoutController extends HttpServlet {
                     requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
                     requestDispatcher.forward(request, response);                    
                     
+                    return;
                 }  
             }
             else {
@@ -174,19 +251,19 @@ public class CheckoutController extends HttpServlet {
                 //Redirect back to checkout page
                 RequestDispatcher requestDispatcher;
                 requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/checkout.jsp");
-                requestDispatcher.forward(request, response);                    
+                requestDispatcher.forward(request, response);   
+                
+                return;
             }
             
         }
-        
-        //Save shipping info in database
-        // [TODO]
-
-        //Redirect to order controller and process order and invoice records
-        //[TODO]        
+                
+        //Redirect to order controller and process order
         RequestDispatcher requestDispatcher;
         requestDispatcher = request.getRequestDispatcher("/order/confirmation");
         requestDispatcher.forward(request, response);
+        
+        return;
     }
     
     /**

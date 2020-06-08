@@ -7,15 +7,10 @@
 <%@page import="uts.isd.model.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% 
-    //Cart Handling
-    Cart cart = (Cart) session.getAttribute("cart");
-    
-%>
+<jsp:useBean id="cart" class="uts.isd.model.Cart" scope="session"/>
+<jsp:setProperty name="cart" property="*"/>
 
 <jsp:include page="/header.jsp"/> 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">    
             
 <div class="container mt-4">
     <div class="row">
@@ -29,7 +24,8 @@
                             <th scope="col">Available</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
-                            <th> </th>
+                            <th scope="col"> </th>
+                            <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,14 +37,16 @@
                                 <td></td>
                                 <td><%= cartItem.getProductID() %></td>
                                 <td>In stock</td>
-                                <td><input class="form-control" type="text" name="quantity" value="<%= cartItem.getQuantity() %> " /></td>
+                                <td><input class="form-control" type="text" name="quantity" value="<%= cartItem.getQuantity() %>" /></td>
                                 <td class="text-right">$ <%= cartItem.getPrice() %> </td>
                                 <td class="text-right"><button class="btn btn-sm btn-info" type="submit" name="action" value="update"><i class="fa fa-save"></i> </button> </td>
                                 <td class="text-right"><button class="btn btn-sm btn-danger" type="submit" name="action" value="remove"><i class="fa fa-trash"></i> </button> </td>
                             </tr>
                         </form>
                         <% } %>
+                        <!--
                         <tr>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -61,10 +59,13 @@
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                             <td>Shipping</td>
                             <td class="text-right">$</td>
                         </tr>
+                        -->
                         <tr>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

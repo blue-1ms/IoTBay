@@ -12,6 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import uts.isd.model.*;
 
 /**
  *
@@ -56,11 +59,16 @@ public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //Create the order linking to customer, shipping and payment details
+        
+        //Reset cart from session so we dont process it again
+        HttpSession session = request.getSession();
+        session.setAttribute("cart", new Cart());
+        
         //Redirect back to confirmation page
         RequestDispatcher requestDispatcher;
         requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/confirmation.jsp");
-        requestDispatcher.forward(request, response);        
-        
+        requestDispatcher.forward(request, response);           
     }
 
     /**

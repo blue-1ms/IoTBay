@@ -24,7 +24,7 @@ import uts.isd.model.Shipping;
 public class CheckoutDBManagerTest {
 
     private DBConnector db;
-    private Connection conn;              
+    private Connection conn;
     
     public CheckoutDBManagerTest() {
     }
@@ -57,6 +57,7 @@ public class CheckoutDBManagerTest {
         CheckoutDBManager instance = new CheckoutDBManager(conn);
 
         boolean result = instance.insertPayment(payment);
+        
         assertTrue(result);
         assertNotNull(payment.getPaymentID());
     }
@@ -69,6 +70,7 @@ public class CheckoutDBManagerTest {
         System.out.println("listPayments");
         int customerID = 123;
         CheckoutDBManager instance = new CheckoutDBManager(conn);
+        
         List<Payment> result = instance.listPayments(customerID);
         
         assertNotNull(result);
@@ -119,5 +121,77 @@ public class CheckoutDBManagerTest {
         boolean result = instance.deletePayment(payment);        
         assertTrue(result);
     }
-    
+ 
+   /**
+     * Test of insertShipping method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testInsertShipping() throws Exception {
+        System.out.println("insertShipping");
+        Shipping shipping = new Shipping(123, "123 Main St", null, "Australia", "NSW", "2000");
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+
+        boolean result = instance.insertShipping(shipping);
+        assertTrue(result);
+        assertNotNull(shipping.getShippingID());
+    }
+
+    /**
+     * Test of listShippings method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testListShipping() throws Exception {
+        System.out.println("listShipping");
+        int customerID = 123;
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+        List<Shipping> result = instance.listShipping(customerID);
+        
+        assertNotNull(result);
+        assertEquals(result.get(0).getCustomerID(), customerID);                
+    }
+
+    /**
+     * Test of selectShipping method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testSelectShipping() throws Exception {
+        System.out.println("selectShipping");
+        int shippingID = 1;
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+        
+        Shipping result = instance.selectShipping(shippingID);
+
+        assertNotNull(result);
+        assertEquals(result.getShippingID(), shippingID);
+    }
+
+    /**
+     * Test of updateShipping method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testUpdateShipping() throws Exception {
+        System.out.println("updateShipping");
+        Shipping shipping = new Shipping(123, "123 Main St", null, "New Zealand", null, "1000");
+        shipping.setShippingID(1);
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+
+        boolean result = instance.updateShipping(shipping);
+        assertTrue(result);
+    }
+
+    /**
+     * Test of deleteShipping method, of class CheckoutDBManager.
+     */
+    @Test
+    public void testDeleteShipping() throws Exception {
+        System.out.println("deleteShipping");
+        Shipping shipping = new Shipping(123, "123 Main St", null, "Australia", "TAS", "6000");
+        CheckoutDBManager instance = new CheckoutDBManager(conn);
+        
+        //Create a new shipping to test delete
+        instance.insertShipping(shipping);
+             
+        boolean result = instance.deleteShipping(shipping);        
+        assertTrue(result);
+    }    
 }

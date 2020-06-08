@@ -58,10 +58,8 @@ public class ValidatorTest {
         System.out.println("checkEmpty");
         Validator instance = new Validator();
         
-        assertTrue(instance.checkEmpty("", ""));
-        assertTrue(instance.checkEmpty("not empty", ""));
-        assertTrue(instance.checkEmpty("", "not empty"));
-        assertFalse(instance.checkEmpty("not empty", "not empty"));
+        assertTrue(instance.checkEmpty(""));
+        assertFalse(instance.checkEmpty("not empty"));
     }
 
     /**
