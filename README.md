@@ -50,3 +50,12 @@ If a customer wishes to purchase products from the site, they must follow these 
 1.
 
 ### Browsing the store
+If a customer wants to browse the store, follow:
+1. Open IoTBay website.
+2. Navigate through different sections.
+
+### Searching the store
+If a customer would like to search the catalogue, follow:
+1. Type in the types related to the product(component, kit).
+2. Once submitted correct type, the result will be shown.
+3. If the type is not found in the db, the output will be blank.
