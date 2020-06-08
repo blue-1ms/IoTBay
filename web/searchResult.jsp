@@ -3,6 +3,7 @@
     Created on : 28/05/2020, 4:06:39 PM
     Author     : blue
 --%>
+<%@page import="mypack.DatabaseConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
 <jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
@@ -38,8 +39,12 @@
             <th>Product Quantity</font></th>
             <th>Product Availability</font></th>
                 <%
-                    Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/iotbay", "iotbay", "admin");
+                    DatabaseConnection conn = new DatabaseConnection();
+            
+                Connection con = null;
+            
+                con = conn.getConnection();
+            
                     Statement st = con.createStatement();
                     ResultSet rs;
                     PreparedStatement ps = con.prepareStatement("select * from IOTBAY.catalogue where producttype =?");
