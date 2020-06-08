@@ -12,6 +12,18 @@
     if (!user.isValid()) {
         response.sendRedirect("login.jsp?status=login");
     }
+    
+String status = request.getParameter("status");
+    String stat = "";
+    if (status != null) {
+        if (status.equals("phone")) {
+            stat = "Please enter a valid Australian phone number.";
+        } else if (status.equals("empty")) {
+            stat = "One or more fields are empty.";
+        } else if (status.equals("email")) {
+            stat = "Email is invalid.";
+        }
+    }
 %>
 
 <!DOCTYPE html>

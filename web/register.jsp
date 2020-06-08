@@ -20,6 +20,9 @@
         } else if (status.equals("email")) {
             stat = "Email is invalid.";
         }
+          else if (status.equals("phone")) {
+            stat = "Please enter a valid Australian phone number.";
+        }
     }
 %>
 
