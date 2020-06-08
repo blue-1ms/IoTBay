@@ -17,7 +17,7 @@
                 <br>
                 <br>
                 <br>
-                <a href="login.jsp" class="button" id="featured">Find out more</a>
+                <a href="product.jsp" class="button" id="featured">Find out more</a>
             </div>
             <div id="featuredImage">
                 <img class="featuredproduct" src="images/googlehome.png" alt="googlehome">
