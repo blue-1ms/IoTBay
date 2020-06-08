@@ -4,6 +4,15 @@
     Author     : mscov
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="user" class="mypack.UserBean" scope="session"/>
 <jsp:setProperty name="user" property="*"/>
@@ -35,11 +44,13 @@
                     <form action="cart" method="post">
                         <h2>Raspberry pi model 4B</h2>
                         <img style="width: 30%; height: 30%" src="images/R4.jpeg" />
-                        <h3>Price:129.99$</h3>
+                       
                         <h3>Description</h3>
                         <p>A 1.5GHz quad-core 64-bit ARM Cortex-A72 CPU (~3× performance) 1GB, 2GB, or 4GB of LPDDR4 SDRAM. Full-throughput Gigabit Ethernet. Dual-band 802.11ac wireless networking.</p>
                         <!-- Please provide product ID here -->
                         <input type="hidden" value="1" name="productID">
+                        <input type="hidden" value="1" name="productID">
+                        
                         <button type="submit" name="action" value="add">Add to Cart</button>
                     </form>
 

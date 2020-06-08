@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay - Catalogue</title>
+        <title>IoTBay - Product</title>
         <link href="css/style.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
@@ -33,12 +33,13 @@
                 <div class="col product">
             
                     <form action="cart" method="post">
-                        <h2>Product</h2>
-                        <h3>Price</h3>
+                        <h2>Google Home</h2>
+                        <img style="width: 30%; height: 30%" src="images/googlehome.png" />
+                        <h3>Price :40$</h3>
                         <h3>Description</h3>
-                        <p>Product Description</p>
+                        <p>Google Nest, previously named Google Home, is a line of smart speakers developed by Google under the Google Nest brand. The devices enable users to speak voice commands to interact with services through Google Assistant, the company's virtual assistant.</p>
                         <!-- Please provide product ID here -->
-                        <input type="hidden" value="0161239861" name="productID">
+                        <input type="hidden" value="2" name="productID">
                         <button type="submit" name="action" value="add">Add to Cart</button>
                     </form>
 
