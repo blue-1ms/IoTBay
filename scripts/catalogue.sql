@@ -7,6 +7,7 @@
  * Author:  blue
  * Created: 06/06/2020
  */
+DROP TABLE Payment;
 
 CREATE TABLE IOTBAY.CATALOGUE(
     PRODUCTID VARCHAR(30),
@@ -18,3 +19,7 @@ CREATE TABLE IOTBAY.CATALOGUE(
     PRODUCTAVAILABILITY VARCHAR(255),
     PRIMARY KEY (productid)
 );
+
+INSERT INTO IOTBAY.CATALOGUE 
+VALUES ('1', 'raspberry pi model 4B', 'kit', '4GB + 32GB', 129.99, '10', 'In-stock'),
+('2', 'generic LED bulb', 'component', '20-pack', 19.99, '50', 'In-stock');
