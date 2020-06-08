@@ -43,7 +43,7 @@
 
                 <ul class="navlinks">
                     <li><a href="index.jsp">Home</a></li>
-                    <li><a href="product.jsp">Products</a></li>
+                    <li><a href="catalogue.jsp">Products</a></li>
                     <li><a href="about.jsp">About Us</a></li>
                     <li><a href="cart"><img src="images/menucart.svg" class="cartIcon"></a></li>
                 </ul>
