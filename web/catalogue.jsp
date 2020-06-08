@@ -33,11 +33,11 @@
                 <div class="col">
 
                     <h1>Catalogue</h1>
-                    <ul>
-                        <li><a href="product.jsp">Product one</a></li>
-                        <li><a href="product.jsp">Product two</a></li>
-                        <li><a href="product.jsp">Product three</a></li>
-                    </ul>        
+                    <div style="display: flex">
+                        <div><a href="product.jsp"><img src="images/googlehome.png" style="width: 200px; height: 200px" alt=""></a><p>Google home</p></div>
+                        <div><a href="product1.jsp"><img src="images/i9.jpeg" style="width: 200px; height: 200px" alt=""></a><p>Intel I9-9900K</p></div>
+                        <div><a href="product2.jsp"><img src="images/R4.jpeg" style="width: 200px; height: 200px" alt=""></a><p>Raspberry pi model 4B</p></div>
+                    </div>        
 
                 </div>
             </div>
